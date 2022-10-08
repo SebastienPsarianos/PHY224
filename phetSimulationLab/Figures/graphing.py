@@ -36,8 +36,6 @@ def current_model(voltage, resistance):
 # Uncertainty Calculations Based on Documentation
 # for U1270 Series Handheld Digital Multimeters
 #
-
-
 def voltage_uncertainty(voltage):
     """Formula based on uncertainty for 300V setting"""
     return voltage * 0.0005 + 0.02
