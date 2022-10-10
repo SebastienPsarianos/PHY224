@@ -1,0 +1,265 @@
+\documentclass[
+	letterpaper, % Paper size, specify a4paper (A4) or letterpaper (US letter)
+	10pt, % Default font size, specify 10pt, 11pt or 12pt
+]{CSUniSchoolLabReport}
+
+\usepackage{fancyvrb}
+\usepackage{multicol}
+\usepackage{subcaption}
+
+\captionsetup[subfigure]{labelformat=empty}
+
+\title{Analyzing radioactive decay of multiple samples with different half lives.}
+
+\author{Sebastien \textsc{Psarianos}\\ Sofiya \textsc{P'yavka}}
+
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\begin{center}
+	\begin{tabular}{l r}
+		Date Performed: & September 13, 2022 \\
+	\end{tabular}
+\end{center}
+
+\section{Methods and Procedure}
+\textbf{Background Radiation} A Geiger counter was set up in the laboratory with no radioactive sample present. Particle count measurements were taken for every $20$ second interval and this was repeated for $1200$ seconds ($60\times20$ second intervals). The data collected in this portion of the laboratory was used as a baseline measurement for the background radiation in the laboratory.\\
+
+\textbf{Experiment 1} (Barium Sample): A sample of Barium-137 was then placed near the Geiger counter. Particle count measurements were taken again over the same intervals as the background radiation measurements ($60\times20$ second intervals).\\
+
+\textbf{Experiment 2} (Fiesta Plate Sample): A fiesta plate with a coating that contains uranium was then placed near the Geiger counter. The same particle count measurements were again taken for $1200$ seconds, however for this experiment, $3$ second intervals were used ($400\times3$ second intervals).
+\section{Results}
+Note: All curve fitting regression values were calculated using the \lstinline{curve_fit} function from the \lstinline{scipy.optimize module}. Referenced functions, equations and calculations are detailed in the \textbf{Appendix} section in addition to the raw data and calulated uncertainties.
+\newpage
+{\Large\textbf{Experiment 1}}
+\begin{figure}[H]
+	\begin{subfigure}{0.45\textwidth}
+		\includegraphics[width=\textwidth]{linearBariumGraph}
+		\caption{\textbf{Figure 1: Particle counts over 20 second interval with mean background radiation subtracted vs time for a sample of Barium-137. Linear, exponential and theoretical half life model regressions are included. Residuals for the linear and nonlinear models are included.}}
+	\end{subfigure}
+	\quad
+	\begin{subfigure}{0.45\textwidth}
+		\includegraphics[width=\textwidth]{logBariumGraph}
+		\caption{\textbf{Figure 2 Linearized particle counts over 20 second interval with mean background radiation subtracted vs time for a sample of Barium-137.  Linear, exponential and theoretical half life model regressions are included. Residuals for the linear and nonlinear models are included.}}
+	\end{subfigure}
+\end{figure}
+All plotted values have had the mean background radiation measured in the laboratory subtracted from them to approximate actual sample data without background interference. This value is apprximately $3.42$.\\\\
+{\large\textbf{Curve fitting}}\\
+Three \lstinline{curve_fit} regressions were performed on the data using an exponential model, a linear model and a
+model based on the theoretical half life of Barium-137. The derivation of the theoretical model is detailed in
+\textbf{Calculation 1}. \textbf{Equation 1}, \textbf{Equation 2} and \textbf{Equation 3} were used for the linear, exponential and
+theoretical models respectively. The implementations shown in \textbf{Function 1}, \textbf{Function 2} and \textbf{Function 3} were used for \lstinline{curve_fit}. The exponential
+and theoretical model regressions were performed on the raw data set and the linear regression was
+performed using the linearized data.\\\\
+All data linearization was done using a natural logarithm on the corresponding y-axis. This was used for
+linear modelling in addition to the linearized plotting in \textbf{Figure 2} of the data, exponential and theoretical
+models. To plot the linear model on \textbf{Figure 1}, the output values of the linear model regression were
+converted to nonlinear by taking the exponential of them (base $e$).\\\\
+{\large\textbf{Uncertainty Calculations}}\\
+Uncertainty in count measurements were all calculated using \textbf{Equation 8}. This was done programmatically
+for all measured values using the python implementation \textbf{Function 5}. Sample calculations for the first reading
+are shown in \textbf{Calculation 2}.\\\\
+Uncertainty was propagated for the linearization by using the logarithmic error propagation shown in
+\textbf{Equation 6}. This again was done programmatically for all values using the python implementation \textbf{Function 4}.
+Sample calculations for the first reading are shown in \textbf{Calculation 3}\\\\
+{\Large\textbf{Experiment 2}}
+\begin{figure}[H]
+	\begin{subfigure}{0.45\textwidth}
+		\includegraphics[width=\textwidth]{fiestaDistributionGraph}
+		\caption{\textbf{Figure 3: Probability density for various ranges of counts measured over 3s intervals. Data is from the fiesta plate sample measurements. Includes both Poisson and Gaussian distributions. }}
+	\end{subfigure}
+	\quad
+	\begin{subfigure}{0.45\textwidth}
+		\includegraphics[width=\textwidth]{backgroundDistributionGraph}
+		\caption{\textbf{Figure 4: Probability density for various ranges of counts measured over 20s intervals. Data is from the background radiation sample measurements. Includes both Poisson and Gaussian distributions. }}
+	\end{subfigure}
+\end{figure}
+{\large\textbf{Histograms}}\\
+Histogram plots in \textbf{Figure 3} and \textbf{Figure 4} were done using the \lstinline{hst} function from the \lstinline{matplotlib.pyplot}
+package with the \lstinline{density} set to true, generating a probability density histogram rather than a count
+histogram. All binning was done automatically by the \lstinline{hst} function. The plot in \textbf{Figure 3} shows the count
+values after the mean background radiation had been subtracted.\\\\
+{\large\textbf{Gaussian and Poisson Distributions}}\\
+For the Poisson distributions, the \lstinline{poisson.pmf} function from \lstinline{scipy.stats} was used. This function is an implementation of the Poisson probability mass function (\textbf{Equation 9}). For both the background and fiesta plate datasets, the provided $\mu$ value was the mean radiation that was detected over the course of the respective experiment.\\
+
+For the Gaussian distributions, the \lstinline{norm.pdf} function from \lstinline{scipy.stats} was used. This function uses the probability density function (\textbf{Equation 10}) to generate a normal distribution. The scale and location for each distribution was set based on the average count over the respective experiment ($\mu$). One standard deviation ($\sigma$) was set to $\sqrt\mu$ and the location of the distribution was set to $\mu$.
+\newpage
+\section{Analysis}
+\section{Discussion}
+\section{Conclusion}
+\newpage
+\section{Appendix}
+{\Large\textbf{Equations}}\\
+\begin{tabular}{p{0.45\linewidth} p{0.45\linewidth}}
+$$f(x) = ax+b$$
+\begin{center}
+	\textbf{Equation 1: Linear Model}
+\end{center}
+&
+$$f(x) = ax^b$$
+\begin{center}
+	\textbf{Equation 2: Exponential Model}
+\end{center}\\
+
+$$I(t)= I_0 e^{-\frac{t \ln{2}}{156}}$$
+\begin{center}
+	\textbf{Equation 3: Theoretical Model}
+\end{center}
+&
+$$I(t) = I_0e^{-\frac{t}{\tau}}$$
+\begin{center}
+	\textbf{Equation 4: Mean isotope lifetime equation}\\
+\end{center}\\
+
+$$\tau = \frac{t_{1/2}}{\ln{2}}$$
+\begin{center}
+	\textbf{Equation 5: Mean isotope lifetime to half life conversion}
+\end{center}
+&
+$$ u\left(\ln(x_i)\right) = \pm\left|\frac{u(x_i)}{x_i}\right|$$
+\begin{center}
+	\textbf{Equation 6: Error Propagation for logarithms}
+\end{center}\\
+
+$$\chi^2 = \sum_{i=1}^N\left(\frac{y_i-y(x_i)}{u(y_i)}\right)$$
+\begin{center}
+	\textbf{Equation 7: Chi-Squared Metric}
+\end{center}
+&
+$$u(N_i) = \pm\sqrt{N_{total, i} + \bar{N}_{b}}$$
+\begin{center}
+	\textbf{Equation 8: Geiger Counter Uncertainty}
+\end{center}\\
+$$P_\mu(n) = e^{-\mu} \frac{\mu^n}{\Gamma(n+1)}$$
+\begin{center}
+	\textbf{Equation 9: Poisson mass distribution function}
+\end{center}
+&
+$$f(x) = \frac{e^{-x^2/2}}{\sqrt{2\pi}}$$
+\begin{center}
+	\textbf{Equation 10: Gaussian probability density function}
+\end{center}
+\end{tabular}
+\vspace{20pt}\\
+{\Large\textbf{Python Functions}}
+\vspace{20pt}\\
+{\large\textbf{Models}}
+\begin{verbatim}
+def linear_model(values, a, b) -> any:
+     return a * values + b
+\end{verbatim}
+\begin{center}
+	\textbf{Function 1: Linear Model (implements Equation 1)}
+\end{center}
+\vspace{5pt}
+\begin{verbatim}
+def exponential_model(values, a, b) -> any:
+     return b * np.exp(a * values)
+\end{verbatim}
+\begin{center}
+	\textbf{Function 2: Exponential Model (implements Equation 2)}
+\end{center}
+\vspace{5pt}
+\begin{verbatim}
+def theoretical_model(values, b) -> any:
+     return b * np.exp((-1 / 156 * np.log(2)) * values)
+\end{verbatim}
+\begin{center}
+	\textbf{Function 3: Theoretical Model (implements Equation 3)}
+\end{center}
+\vspace{10pt}
+{\large\textbf{Uncertainty}}
+\begin{verbatim}
+def logarithmic_error_propagation(value: any, uncertainty: any) -> float:
+     """Return the propogated error for the logarithm of a value"""
+     return abs(uncertainty / value)
+\end{verbatim}
+\begin{center}
+	\textbf{Function 4: Logarithmic Error Propagation (implements Equation 6)}
+\end{center}
+\vspace{10pt}
+\begin{verbatim}
+def calculate_uncertainty(count, mean_background) -> any:
+     """Return the uncertainty of the sample.
+     """
+     return np.sqrt(count + mean_background)
+\end{verbatim}
+\begin{center}
+	\textbf{Function 5: Function used to calculate count uncertainty values (implements Equation 8)}
+\end{center}
+\vspace{10pt}
+{\large\textbf{Data Analysis}}
+\begin{verbatim}
+def characterize(y: any, func: any, u: any) -> float:
+     """Return the reduced chi-squared metric to determine how well a model
+     function fits a given set of data using the measured data <y>, the
+     prediction with the model <func> and the uncertainty on each measurement's
+     dependent data <u>.
+     """
+     value = 0
+
+     for i in range(np.size(y)):
+          value += ((y[i] - func[i]) ** 2) / (u[i] ** 2)
+          i += 1
+
+     return value / (np.size(y) - 2)
+\end{verbatim}
+\begin{center}
+	\textbf{Function 6: Function used to calculate chi-squared metric (implements equation 7)}
+\end{center}
+\vspace{5pt}
+\begin{verbatim}
+def count_rate(events, sample_time) -> tuple:
+     """Return the count rate and its uncertainty.
+     """
+     return events / sample_time, np.sqrt(events) / sample_time
+\end{verbatim}
+\begin{center}
+	\textbf{Function 7: Function used to calculate count-rate for experimental data}
+\end{center}
+\newpage % Probably Remove
+{\Large\textbf{Sample Calculations}}
+\vspace{20pt}\\
+The theoretical model was derived by first combining of \textbf{Equation 4} and \textbf{Equation 5}:
+$$I(t) = I_0e^{-\frac{t}{\tau}} \iff I(t) = I_0e^{\frac{t}{-\frac{t_{1/2}}{\ln{2}}}} \iff I(t) = I_0e^{-\frac{t\ln{2}}{t_{1/2}}}$$
+The theoretical value for the half-life of Barium ($t_{\frac{1}{2}} = 156s$) was included in the equation:
+$$I(t) = I_0e^{-\frac{t\ln{2}}{156}}$$
+\begin{center}
+	\textbf{Calculation 1: Deriving Theoretical Model}
+\end{center}
+\vspace{10pt}
+All Geiger counter uncertainty calculations are based off of \textbf{Equation 8}. The mean of the background radiation count measured in the lab over each 20 second interval was $\bar{N}_b \approx 3.42$, therefore:
+$$u(N_i) = \pm\sqrt{N_{total, i} + 3.42}$$
+The first count value $N_1$ measured in experiment 1 was $N_1= 666$. Therefore:
+$$u(N_1) = \pm\sqrt{666 + 3.42} = \pm\sqrt{669.42} \approx \pm25.87$$
+Uncertainty for all values was calculated in this manner programmatically using \textbf{Function 5} which is an implementation of \textbf{Equation 8}.
+\begin{center}
+	\textbf{Calculation 2: Sample Geiger Counter uncertainty calculation}
+\end{center}
+\vspace{10pt}
+The error values for the linearized plot were calculated using \textbf{Equation 6}. The first measured count value width background subtracted was $N'_{1} = 662.6$ and the uncertainty of the first measurement $u(N'_1) \approx 25.87$ as shown in \textbf{Calculation 2}. Therefore, by \textbf{Equation 6}:
+$$u(\ln(N'_1))= \pm\left|\frac{u(N'_1)}{N'_1}\right|= \pm\left|\frac{25.87}{662.6}\right| \approx \pm0.039$$
+\begin{center}
+	\textbf{Calculation 3: Sample logarithmic error propagation}
+\end{center}
+\newpage
+{\Large\textbf{Raw Data}}\\
+\vspace{20pt}\\
+\begin{center}
+\input{backgroundTables}
+\end{center}
+\begin{center}
+	\textbf{Table 1: Raw data from the background radiation measurement, time intervals and measured counts are shown.}
+\end{center}
+\input{bariumTables}
+\begin{center}
+	\textbf{Table 2: Raw data from experiment 1 showing time intervals, total measured counts and rounded counts with background subtracted.}
+\end{center}
+\input{fiestaTables}
+\begin{center}
+	\textbf{Table 3: Raw data from experiment 2 showing time intervals, total measured counts and rounded counts with background subtracted.}
+\end{center}
+\end{document}
