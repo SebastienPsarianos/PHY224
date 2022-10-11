@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded format=pdflatex 2022.1.28)  10 OCT 2022 16:50
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded format=pdflatex 2022.1.28)  11 OCT 2022 13:04
 entering extended mode
  \write18 enabled.
  file:line:error style messages enabled.
@@ -1061,54 +1061,84 @@ File: ../figures/logBariumGraph.pdf Graphic file (type pdf)
 Package pdftex.def Info: ../figures/logBariumGraph.pdf  used on input line 45.
 (pdftex.def)             Requested size: 199.60895pt x 149.70493pt.
 LaTeX Font Info:    Font shape `T1/XCharter-TLF/b/n' will be
-(Font)              scaled to size 11.52008pt on input line 50.
+(Font)              scaled to size 11.52008pt on input line 52.
 <../figures/fiestaDistributionGraph.pdf, id=13, 578.16pt x 433.62pt>
 File: ../figures/fiestaDistributionGraph.pdf Graphic file (type pdf)
 <use ../figures/fiestaDistributionGraph.pdf>
-Package pdftex.def Info: ../figures/fiestaDistributionGraph.pdf  used on input line 71.
+Package pdftex.def Info: ../figures/fiestaDistributionGraph.pdf  used on input line 73.
 (pdftex.def)             Requested size: 199.60895pt x 149.70493pt.
 <../figures/backgroundDistributionGraph.pdf, id=14, 578.16pt x 433.62pt>
 File: ../figures/backgroundDistributionGraph.pdf Graphic file (type pdf)
 <use ../figures/backgroundDistributionGraph.pdf>
-Package pdftex.def Info: ../figures/backgroundDistributionGraph.pdf  used on input line 76.
+Package pdftex.def Info: ../figures/backgroundDistributionGraph.pdf  used on input line 78.
 (pdftex.def)             Requested size: 199.60895pt x 149.70493pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 49--79
+Underfull \hbox (badness 10000) in paragraph at lines 49--81
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 49--79
+Underfull \hbox (badness 10000) in paragraph at lines 49--81
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 49--79
+Underfull \hbox (badness 10000) in paragraph at lines 49--81
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 49--79
+Underfull \hbox (badness 10000) in paragraph at lines 49--81
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 49--79
+Underfull \hbox (badness 10000) in paragraph at lines 49--81
 
  []
 
 [2 <../figures/linearBariumGraph.pdf> <../figures/logBariumGraph.pdf>]
-Underfull \hbox (badness 10000) in paragraph at lines 80--87
+Underfull \hbox (badness 10000) in paragraph at lines 82--89
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 80--87
+Underfull \hbox (badness 10000) in paragraph at lines 82--89
 
  []
 
-[3 <../figures/fiestaDistributionGraph.pdf> <../figures/backgroundDistributionGraph.pdf>] [4] [5] [6] [7]
-Underfull \hbox (badness 10000) in paragraph at lines 249--251
+[3 <../figures/fiestaDistributionGraph.pdf> <../figures/backgroundDistributionGraph.pdf>]
+Underfull \hbox (badness 10000) in paragraph at lines 93--94
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 95--98
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 99--101
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 102--104
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 105--114
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 115--116
+
+ []
+
+[4] [5] [6] [7]
+Underfull \hbox (badness 10000) in paragraph at lines 276--278
 
  []
 
@@ -1153,7 +1183,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 37--37
  []
 
 )
-Overfull \hbox (13.82579pt too wide) in paragraph at lines 1--258
+Overfull \hbox (13.82579pt too wide) in paragraph at lines 1--285
 [] [] 
  []
 
@@ -1258,27 +1288,27 @@ Underfull \hbox (badness 10000) in paragraph at lines 407--407
  []
 
 )
-Overfull \hbox (13.82579pt too wide) in paragraph at lines 1--262
+Overfull \hbox (13.82579pt too wide) in paragraph at lines 1--289
 [] [] 
  []
 
 
-Overfull \hbox (13.82579pt too wide) in paragraph at lines 1--262
+Overfull \hbox (13.82579pt too wide) in paragraph at lines 1--289
 [] [] 
  []
 
 
-Overfull \hbox (13.82579pt too wide) in paragraph at lines 1--262
+Overfull \hbox (13.82579pt too wide) in paragraph at lines 1--289
 [] [] 
  []
 
 
-Overfull \hbox (13.82579pt too wide) in paragraph at lines 1--262
+Overfull \hbox (13.82579pt too wide) in paragraph at lines 1--289
 [] [] 
  []
 
 
-Overfull \hbox (13.82579pt too wide) in paragraph at lines 1--262
+Overfull \hbox (13.82579pt too wide) in paragraph at lines 1--289
 [] [] 
  []
 
@@ -1295,9 +1325,9 @@ Here is how much of TeX's memory you used:
  31187 multiletter control sequences out of 15000+600000
  514078 words of font info for 126 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 100i,11n,131p,578b,1031s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 100i,11n,131p,684b,1031s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2021/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}{/usr/local/texlive/2021/texmf-dist/fonts/enc/dvips/xcharter/xch_abgjzu.enc}{/usr/local/texlive/2021/texmf-dist/fonts/enc/dvips/xcharter/xch_rydp4l.enc}{/usr/local/texlive/2021/texmf-dist/fonts/enc/dvips/xcharter/xch_axzxh7.enc}</usr/local/texlive/2021/texmf-dist/fonts/type1/public/xcharter/XCharter-Bold.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/xcharter/XCharter-Roman.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/xcharter/XCharterMathMI.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/xcharter/XCharterMathRM.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sftt1000.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/newtx/txexs.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/newtx/txmiaX.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/newtx/txsys.pfb>
-Output written on /Users/sebastienpsarianos/Desktop/Classes/fall22/PHY224/radioactivityLab/latex/output/radioactivityLab.pdf (14 pages, 273083 bytes).
+Output written on /Users/sebastienpsarianos/Desktop/Classes/fall22/PHY224/radioactivityLab/latex/output/radioactivityLab.pdf (14 pages, 277232 bytes).
 PDF statistics:
  263 PDF objects out of 1000 (max. 8388607)
  85 compressed objects within 1 object stream

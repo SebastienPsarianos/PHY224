@@ -120,21 +120,21 @@ print(
     + str(pvar1[1] * np.exp(popt1[1]))
 )
 
-# Performing the nonlinear regression on the data using the nonlinear model.
+# Performing the exponential regression on the data using the exponential model.
 popt2, pcov2 = curve_fit(
     exponential_model, time, sample_count, p0=(-1 / 156 * np.log(2), popt3[0]),
 )
 pvar2 = np.sqrt(np.diag(pcov2))
 uncertainty2 = pvar2[0] / popt2[0] ** 2
 print(
-    "The half-life for the nonlinear regression method is "
+    "The half-life for the exponential regression method is "
     + str(-1 / popt2[0] * np.log(2))
     + " ± "
     + str(uncertainty2)
     + "s."
 )
 print(
-    "The intensity at t = 0 for the nonlinear model is "
+    "The intensity at t = 0 for the exponential model is "
     + str(popt2[1])
     + " ± "
     + str(pvar2[1])
@@ -168,7 +168,7 @@ plt.scatter(
     time,
     exponential_model(time, popt2[0], popt2[1]) - sample_count,
     color="purple",
-    label="Nonlinear Model Residuals",
+    label="Exponential Model Residuals",
 )
 plt.xlabel("Time (s)")
 plt.ylabel("Sample Count")
@@ -212,7 +212,7 @@ plt.scatter(
     time,
     linear_model(time, popt2[0], np.log(popt2[1])) - np.log(sample_count),
     color="purple",
-    label="Nonlinear Model Residuals",
+    label="Exponential Model Residuals",
 )
 plt.xlabel("Time (s)")
 plt.ylabel("Sample Count")
@@ -235,7 +235,7 @@ print(
     + "."
 )
 print(
-    "The reduced chi-squared value for the nonlinear model is "
+    "The reduced chi-squared value for the exponential model is "
     + str(
         characterize(
             sample_count,
@@ -264,29 +264,50 @@ sample_fiesta = total_fiesta - mean_background
 sorted_fiesta = np.sort(sample_fiesta)
 sorted_background = np.sort(background)
 average_fiesta = np.mean(sorted_fiesta)
-x_axis_fiesta = np.arange(15, 65, 0.5)
-y_axis_fiesta = poisson.pmf(x_axis_fiesta, mu=average_fiesta)
-x_axis_background = np.arange(1, 10, 0.5)
-y_axis_background = poisson.pmf(x_axis_background, mu=mean_background)
-fit_fiesta = norm.pdf(sorted_fiesta, average_fiesta, np.sqrt(average_fiesta))
-fit_background = norm.pdf(
-    sorted_background, mean_background, np.sqrt(mean_background)
-)
+
+# X axis for Poisson distribution
+x_axis_fiesta_poisson = np.arange(15, 65, 1)
+x_axis_background_poisson = np.arange(0, 10, 1)
+
+# X axis for background distribution
+x_axis_fiesta_gauss = np.arange(15, 65, 0.01)
+x_axis_background_gauss = np.arange(0, 10, 0.01)
+
 
 plt.hist(sorted_fiesta, density=True)
-plt.plot(x_axis_fiesta, y_axis_fiesta, label="Poisson Distribution")
-plt.plot(sorted_fiesta, fit_fiesta, label="Gaussian Distribution")
+plt.plot(
+    x_axis_fiesta_poisson,
+    poisson.pmf(x_axis_fiesta_poisson, mu=average_fiesta),
+    label="Poisson Distribution",
+)
+plt.plot(
+    x_axis_fiesta_gauss,
+    norm.pdf(x_axis_fiesta_gauss, average_fiesta, np.sqrt(average_fiesta)),
+    label="Gaussian Distribution",
+)
 plt.xlabel("Number of counts over 3s interval")
 plt.ylabel("Probability Density")
+plt.xlim(0, 80)
 plt.legend()
 plt.savefig(f"{directory}/figures/fiestaDistributionGraph.pdf")
 plt.cla()
 
 plt.hist(sorted_background, density=True)
-plt.plot(x_axis_background, y_axis_background, label="Poisson Distribution")
-plt.plot(sorted_background, fit_background, label="Gaussian Distribution")
+plt.plot(
+    x_axis_background_poisson,
+    poisson.pmf(x_axis_background_poisson, mu=mean_background),
+    label="Poisson Distribution",
+)
+plt.plot(
+    x_axis_background_gauss,
+    norm.pdf(
+        x_axis_background_gauss, mean_background, np.sqrt(mean_background)
+    ),
+    label="Gaussian Distribution",
+)
 plt.xlabel("Number of counts over 20s interval")
 plt.ylabel("Probability Density")
+plt.xlim(0, 10)
 plt.legend()
 plt.savefig(f"{directory}/figures/backgroundDistributionGraph.pdf")
 plt.cla()
