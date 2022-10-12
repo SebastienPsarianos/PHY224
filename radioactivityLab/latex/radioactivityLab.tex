@@ -25,14 +25,18 @@
 	\end{tabular}
 \end{center}
 
+\vspace{20pt}
 \section{Methods and Procedure}
+\vspace{20pt}
 \textbf{Background Radiation} A Geiger counter was set up in the laboratory with no radioactive sample present. Particle count measurements were taken for every $20$ second interval and this was repeated for $1200$ seconds ($60\times20$ second intervals). The data collected in this portion of the laboratory was used as a baseline measurement for the background radiation in the laboratory.\\
 
 \textbf{Experiment 1} (Barium Sample): A sample of Barium-137 was then placed near the Geiger counter. Particle count measurements were taken again over the same intervals as the background radiation measurements ($60\times20$ second intervals).\\
 
 \textbf{Experiment 2} (Fiesta Plate Sample): A fiesta plate with a coating that contains uranium was then placed near the Geiger counter. The same particle count measurements were again taken for $1200$ seconds, however for this experiment, $3$ second intervals were used ($400\times3$ second intervals).
+\vspace{20pt}
 \section{Results}
-Note: All curve fitting regression values were calculated using the \lstinline{curve_fit} function from the \lstinline{scipy.optimize module}. Referenced functions, equations and calculations are detailed in the \textbf{Appendix} section in addition to the raw data and calulated uncertainties.
+\vspace{20pt}
+Note: All curve fitting regression values were calculated using the \lstinline{curve_fit} function from the \lstinline{scipy.optimize}. Referenced functions, equations and calculations are detailed in the \textbf{Appendix} section in addition to the raw data and calulated uncertainties.
 \newpage
 {\Large\textbf{Experiment 1}}
 \begin{figure}[H]
@@ -89,7 +93,8 @@ For the Poisson distributions, the \lstinline{poisson.pmf} function from \lstinl
 
 For the Gaussian distributions, the \lstinline{norm.pdf} function from \lstinline{scipy.stats} was used. This function uses the probability density function (\textbf{Equation 10}) to generate a normal distribution. The scale and location for each distribution was set based on the average count over the respective experiment ($\mu$). One standard deviation ($\sigma$) was set to $\sqrt\mu$ and the location of the distribution was set to $\mu$.
 \newpage
-\section{Analysis and Discussion}
+\section{Analysis}
+\vspace{20pt}
 {\Large\textbf{Experiment 1}}\\
 
 The chi-squared values for each graph were calculated programmatically using \textbf{Function 6} (implementing
@@ -106,25 +111,63 @@ The exponential model gave a value closer to the theoretical half life of 156 se
 theoretical half life does not fall in the uncertainty range of either model.\\
 In \textbf{Figure 1} and \textbf{Figure 2}, both the linear and exponential curves visually fit the experimental data quite well,
 with the exponential regression method tending closer to the theoretical curve. This can be clearly seen in \textbf{Figure 2}, where the exponential model is visually closer to the theoretical curve.\\
-Analyzing the chi-squared values for each graph, the exponential's value of $0.98$ is much closer to
+Analyzing the chi-squared values for each graph, the nonlinear regression's value of $0.98$ is much closer to
 the ideal value of $1$ than the linear regression's value of $1.30$. Although the value determined from the linear
 model deviates slightly farther, it is still relatively close to the accepted value. Ultimately, the reduced chi-squared
-values indicate that both models are good fits, however, the exponential model is a closer approximation to
-the experimental data.\\
+values indicate that both models are good fits. However, nonlinear regression provides values that more closely approximate the experimental data.\\
 
 {\Large\textbf{Experiment 2}}\\
 
-Examining \textbf{Figure 3}, the Poisson and Gaussian distributions look almost identical, it follows that more data points would have likely made both functions look the same. In contrast, examining \textbf{Figure 4}, the Poisson and Gaussian distributions have similar shapes however they are shifted away from one another. The models for the background radiation data would have benefited from more samples being taken, evidently demonstrated by the Fiesta plate models where 400 samples were taken in contrast to the 60 taken for the background data.
+Examining the fiesta plate data in \textbf{Figure 3}, the Poisson distribution is a very close approximation of the
+Gaussian distribution. There was a larger visual discrepancy between the two distributions in the background
+data in \textbf{Figure 4}. The Poisson distribution in \textbf{Figure 4} is notably shifted left of the Gaussian
+distribution. Due to the discrete, non-negative nature of Poisson distributions, as $\mu\rightarrow 0$, they will become less and less
+symmetrical and will fall off much more steeply on the left. This is not reflected in Gaussian
+distributions which have the possibility of having positive probabilities for negative numbers. The Poisson
+distribution in \textbf{Figure 4} is clearly not symmetrical and has a noticeably steeper slope on the left side. This
+indicates why \textbf{Figure 3} with its much higher $\mu$ value is a much better approximation of a Gaussian distribution.\\
 
-Key Points:\\
-Comparing Distributions:\\
----- Poisson is good approximation of normal distribution for first graph\\
----- Difference is bigger in the second graph.\\
-----
-
-\section{Conclusion}
+Visually, the experimental data in \textbf{Figure 3} appears to be a much better approximation of both the Poisson
+and Gaussian distributions. The experimental data in \textbf{Figure 4} seems to be a better approximation of the
+Poisson distribution which makes sense due to the positive discrete data set provided by a Geiger counter
+and the data's proximity to counts of $0$.
 \newpage
+\vspace{20pt}
+\section{Discussion}
+\vspace{20pt}
+{\Large\textbf{Experiment 1}}\\
+
+Although the experimental half-lives were slightly less than the expected value, this was likely due to the
+background radiation which had to be subtracted from the collected data. The experiment ultimately
+verifies that the intensity of radiation decays exponentially and agrees that the half-life of Barium-137 is
+approximately 2.6 minutes. If the mean background radiation could be calculated with a larger sample size, a more
+accurate background radiation level could likely be determined. Modifications to a future experiment could
+include a longer period of background radiation measurements with a smaller interval to get more data points
+and by extension a more accurate approximation.\\
+
+{\Large\textbf{Experiment 2}}\\
+
+More count data points would likely create a more accurate model of the radioactive emission for both
+the background and the fiesta plate. This could be achieved by measuring both for a longer period of time.\\
+
+To get a Gaussian and Poisson distribution that are more similar, altering the measurement method to get
+a higher $\mu$ value would be the solution. This is due to the fact that Poisson distributions tend towards Gaussian
+normal distributions as $\mu\rightarrow \infty$. This could be achieved experimentally by extending the length of the
+intervals to get a larger number for each count value. This would likely make a significant difference for the
+background data as it is so close to $0$.\\\\
+
+Experiment 1 and experiment 2 can both be improved by altering the intervals for the background measurement. Improvements would come from a background measurement interval length decrease in experiment 1 and an increase in experiment 2. Therefore, for a future experiment, it would be advantageous to record the background radiation twice over different intervals. This would give two datasets that provide more useful information for each experiments' analysis.
+\vspace{20pt}
+\section{Conclusion}
+\vspace{20pt}
+The results of this lab for both experiments 1 and 2 were generally quite close to their theoretical values.
+However, the experimental values and models both deviated away from expected values. Thus, it is evident that a factor, such as the background radiation, slightly skewed the experimental results.. This is likely an issue with the background radiation measurement. Larger
+sample sizes for background radiation and the measurement interval changes discussed in the \textbf{Discussion}
+section would reduce this error.
+
+\vspace{20pt}
 \section{Appendix}
+\vspace{20pt}
 {\Large\textbf{Equations}}\\
 \begin{tabular}{p{0.45\linewidth} p{0.45\linewidth}}
 $$f(x) = ax+b$$

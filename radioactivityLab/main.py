@@ -267,7 +267,7 @@ average_fiesta = np.mean(sorted_fiesta)
 
 # X axis for Poisson distribution
 x_axis_fiesta_poisson = np.arange(15, 65)
-x_axis_background_poisson = np.arange(0, 10)
+x_axis_background_poisson = np.arange(-1, 10)
 
 # X axis for background distribution
 x_axis_fiesta_gauss = np.arange(15, 65, 0.01)
@@ -279,7 +279,7 @@ plt.plot(
     x_axis_fiesta_poisson,
     poisson.pmf(x_axis_fiesta_poisson, mu=average_fiesta),
     label="Poisson Distribution",
-    marker="o"
+    marker="o",
 )
 plt.plot(
     x_axis_fiesta_gauss,
@@ -298,7 +298,7 @@ plt.plot(
     x_axis_background_poisson,
     poisson.pmf(x_axis_background_poisson, mu=mean_background),
     label="Poisson Distribution",
-    marker="o"
+    marker="o",
 )
 plt.plot(
     x_axis_background_gauss,
