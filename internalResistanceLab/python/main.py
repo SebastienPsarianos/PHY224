@@ -443,7 +443,7 @@ plt.errorbar(
         x_axis_2 / y_axis_2 / 1000,
     ),
     capsize=4,
-    c="r",
+    c="b",
     label="Experimental Data " "Using the Option 2 " "Setup",
     marker="o",
     linestyle="",

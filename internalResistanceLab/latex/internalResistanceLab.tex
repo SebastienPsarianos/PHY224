@@ -25,9 +25,7 @@
 	\end{tabular}
 \end{center}
 \section{Introduction}
-The primary objective of this experiment was to determine the internal resistance of a battery by comparing
-the current and voltage readings across various resistors to readings from a power supply with approximately
-$0$ internal resistance. The secondary objective of this experiment was to compare the results from the two
+The primary objective of this experiment was to determine the output resistance of a battery and power supply. The secondary objective of this experiment was to compare the results from the two
 different Setups \textbf{Setup 1} and \textbf{Setup 2}.\\
 
 All analysis was done with combination of Ohm's Law and Kirchoff's Loop Law.\\
@@ -81,11 +79,11 @@ In experiment 1, a circuit connected to a 6V battery as the power source was set
 In experiment 2, a circuit connected to a power supply as the power source was set up as shown in \textbf{Setup 1} using a voltmeter, an ammeter and a resistor. Similarly, the voltmeter was set to a range of 30V and the ammeter was set to a range of 300mA. The power supply was set to 6.5V. The current and the voltage across the power source were then measured and recorded. This was then repeated seven more times using the same resistors in experiment 1. The same procedure was repeated, however, the setup of the circuit was modified as shown in \textbf{Setup 2}.  Furthermore, the entire procedure for both circuit setups was repeated for terminal voltage settings of 10V, 15V and 20V. \\
 
 The range of resistor values that were used were chosen to provide a wide range of resistance values. The
-resistance values ranged from $100\Omega\rightarrow 2800\Omega$. The reason n o resistors below $100\Omega$ were used was to prevent the amperage getting
+resistance values ranged from $100\Omega\rightarrow 2800\Omega$. The reason no resistors below $100\Omega$ were used was to prevent the amperage getting
 too high and the resistor exhibiting overheating effects. As the resistance passed the range of $2800\Omega$ the
 amperage values got quite small and were reaching the limits of the accuracy of the multimeter so $2800\Omega$
 was chosen as an upper bound.\\
-
+\newpage
 \section{Results}
 Note, all curve fitting values and their uncertainties were calculated using the \lstinline{curve_fit} function from the \lstinline{scipy.optimize} module. All other referenced functions, equations and calculations can be found and are detailed in the Appendix section, in addition to the raw data and calculated uncertainties.\\
 
@@ -97,19 +95,18 @@ The graphs were then generated using \textbf{Function 3} which plots the experim
 
 Note, all final resistance values were determined by multiplying the parameter of best fit for the resistance  determined by \lstinline{curve_fit} by 1000, as the current was measured in mA.\\
 
-To determine the maximum current for each power supply setting, the x-intercept of the line of best fit was determined by rearranging \textbf{Equation 5} for the current when the voltage was equal to zero. Then the best fit parameters for each power supply setting were passed into the equation. The final value was multiplied by 1000 in order to determine the maximum current in amps rather than milliamps. This was done for the data collected from both experimental setups. The maximum currents and terminal voltages (determined from \lstinline{curve_fit}) were then plotted. The uncertainties for the terminal voltages were determined using \lstinline{curve_fit} and the uncertainties for the maximum current were determined using \textbf{Equation 7}.
+To determine the maximum current for each power supply setting, the x-intercept of the line of best fit was determined by rearranging \textbf{Equation 5} for the current when the voltage was equal to zero. Then the best fit parameters for each power supply setting were passed into the equation. The final value was divided  by 1000 in order to determine the maximum current in amps rather than milliamps. This was done for the data collected from both experimental setups. The maximum currents and terminal voltages (determined from \lstinline{curve_fit}) were then plotted. The uncertainties for the terminal voltages were determined using \lstinline{curve_fit} and the uncertainties for the maximum current were determined using \textbf{Equation 7}.
 \input{graphs}
 \newpage
-\section{Analysis}
-In experiment 1, the output resistance determined for the battery in \textbf{Setups 1 and 2} were $ 0.16 \pm 0.02 \Omega $ and $ 2.4 \pm 0.2 \Omega $ respectively. The negative of the slope of the line of best fit in \textbf{Graphs 1 and 2} represents the value of output resistance.
+\section{Analysis and Discussion}
+In experiment 1, the output resistance determined for the battery in \textbf{Setups 1 and 2} were $ 0.16 \pm 0.02 \Omega $ and $ 2.4 \pm 0.2 \Omega $ respectively. The negative of the slope of the line of best fit in \textbf{Graphs 1 and 2} represents the value of output resistance.\\
 
-In experiment 2, the output resistance determined for the power supply for settings $6.5V$, $10V$, $15V$ and $20V$ in \textbf{Setup 1} were $ 0.037 \pm 0.007 \Omega $, $ 0.023 \pm 0.003 \Omega $, $ 0.027 \pm 0.002 \Omega $ and $ 0.025 \pm 0.002 \Omega $ respectively. The output resistance determined for the power supply for settings $6.5V$, $10V$, $15V$ and $20V$ in \textbf{Setup 2} were $ 1.853 \pm 0.008 \Omega $, $ 1.854 \pm 0.002 \Omega $, $ 1.853 \pm 0.004 \Omega $, $ 1.859 \pm 0.006 \Omega $ respectively. The negative of the slope of the line of best fit in \textbf{Graphs 3-10} represents the value of output resistance. In both setups, the value of the output resistance remains relatively consistent for all settings of voltage.
+In experiment 2, the output resistance determined for the power supply for settings $6.5V$, $10V$, $15V$ and $20V$ in \textbf{Setup 1} were $ 0.037 \pm 0.007 \Omega $, $ 0.023 \pm 0.003 \Omega $, $ 0.027 \pm 0.002 \Omega $ and $ 0.025 \pm 0.002 \Omega $ respectively. The output resistance determined for the power supply for settings $6.5V$, $10V$, $15V$ and $20V$ in \textbf{Setup 2} were $ 1.853 \pm 0.008 \Omega $, $ 1.854 \pm 0.002 \Omega $, $ 1.853 \pm 0.004 \Omega $, $ 1.859 \pm 0.006 \Omega $ respectively. The negative of the slope of the line of best fit in \textbf{Graphs 3-10} represents the value of output resistance. In both setups, the value of the output resistance remains relatively consistent for all settings of voltage.\\
 
-The experimental data plotted in all graphs demonstrate a linear dependence, verifying the relationship described by \textbf{Equation 8}.
+The experimental data plotted in all graphs demonstrate a linear dependence, verifying the relationship described by \textbf{Equation 8}.\\
 
-Examining \textbf{Graph 11}, the maximum current approximately varies linearly with the terminal voltage. So as the terminal voltage increases, the maximum current increases proportionally. The internal electronics of the power supply ensure that the resistance is as minimal as possible so the output resistance approaches zero beyond the regulation regime.
-\newpage
-\section{Discussion}
+Examining \textbf{Graph 11}, the maximum current approximately varies linearly with the terminal voltage. So as the terminal voltage increases, the maximum current increases proportionally. The internal electronics of the power supply ensure that the resistance is as minimal as possible so the output resistance approaches zero beyond the regulation regime.\\
+
 Two main assumptions were made in the analysis of this experiment, namely that the voltmeter and
 ammeter were both ideal. Ideal voltmeters have a resistance of $\infty$ and ideal ammeters have $0$ resistance. However,
 in the real world, this is not possible.\\
@@ -142,7 +139,7 @@ During the experiment, when the resistors on the lower end of the resistance ran
 (specifically the $100\Omega$ and $200\Omega$ measurements), the current measurements would drop rapidly. This was likely
 due to the resistor heating up. Although the lower end of the range was chosen to prevent this from
 occurring, it would likely be a better idea for future experiments to do fewer measurements with low ohm resistors.
-\newpage
+
 \section{Appendix}
 
 {\large\textbf{Equations}}\\
