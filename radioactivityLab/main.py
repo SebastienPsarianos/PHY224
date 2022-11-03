@@ -126,6 +126,7 @@ popt2, pcov2 = curve_fit(
 )
 pvar2 = np.sqrt(np.diag(pcov2))
 uncertainty2 = pvar2[0] / popt2[0] ** 2
+
 print(
     "The half-life for the exponential regression method is "
     + str(-1 / popt2[0] * np.log(2))
