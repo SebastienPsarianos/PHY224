@@ -1,0 +1,57 @@
+\documentclass[
+	letterpaper, % Paper size, specify a4paper (A4) or letterpaper (US letter)
+	10pt, % Default font size, specify 10pt, 11pt or 12pt
+]{CSUniSchoolLabReport}
+
+\usepackage{fancyvrb}
+\usepackage{multicol}
+\usepackage{subcaption}
+
+\captionsetup[subfigure]{labelformat=empty}
+
+\title{}
+
+\author{Sebastien \textsc{Psarianos}\\ Sofiya \textsc{P'yavka}}
+
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\begin{center}
+	\begin{tabular}{l r}
+		Date Performed: & October 6, 2022 \\
+	\end{tabular}
+\end{center}
+\section{Introduction}
+\textbf{Experiment 1: Two Polarizers, verify Malus’ Law and Three Polarizers}
+The first objective of this experiment is to verify Malus' Law using two polarizers. Using three polarizers, the second objective of this experiment is to determine the angles between two of the polarizers at which the maximum and minimum light intensities occur.\\
+
+A vector of light can be resolved into two components when it passes through a Polaroid oriented at a certain angle. Only light polarized along the transmission axis will pass through the Polaroid. The light intensity is proportional to the square of the electric field amplitude which is described by the relationship $I(\theta)= I_0\cos^2\phi$ where the initial intensity $I_0=E^2$, Malus' Law. When two polarizers are used, the light vector can be resolved into two components, one parallel and one perpendicular to the transmission axis of the second polarizer where  is the angle between the two transmission axes of the two polarizers.\\
+
+When three polarizers are used where the angle between the first and third polarizer is $\frac \pi2$, a polarizer between them can be rotated to allow a certain amount of light to pass through all three polarizers. The relationships between the three polarizers are as follows;\\
+
+The intensity after passing through the first polarizer is $I_2=I_1\cos^2\phi$.\\
+
+The intensity of the light after passing through the third polarizer is:
+$$I_3=I_2\cos^2\left(\frac \pi2 - \phi\right)=I_1\cos^2\phi\cos^2\left(\frac\pi2 - \phi\right)$$
+
+Rearranging the previous equation:
+$$I_3=\frac{I_1}4\sin^2(\phi)$$
+
+\textbf{Experiment 2: Polarization by Reflection and Brewster’s Angle}\\
+\newpage
+\section{Methodology and Procedure}
+\textbf{Experiment 1}\\
+
+A polarizer and a CI-6504A light sensor were placed on an optics track. A laser was then sent through the polarizer to be detected by the light sensor. Using the Polarization of Light software to observe the light intensity, the polarizer was rotated to an angle where the light intensity was at its maximum. A polarizer with a CI-6538 rotary motion sensor was then placed on the track between the first polarizer and the light sensor and rotated to an angle where the light intensity passing through both polarizers was at its maximum. To scan the light intensity versus angle, the polarizer with the rotary motion sensor was rotated through 180 degrees. This was repeated multiple times until a set of consistent data was acquired. Using the Polarization of Light software, the data was collected from light sensor and rotary motion sensor in volts and radians respectively. \textbf{Figure 1} shows the experimental setup of the two polarizers.\\
+
+The polarizer with the rotary motion sensor was removed from the track. Using the Polarization of Light software to observe the light intensity, the first polarizer was rotated to an angle where the light intensity was at its maximum. A second polarizer was then placed between the first polarizer and the light sensor on the track and rotated until the light intensity through both polarizers was at a minimum. Finally, the polarizer with the rotary motion sensor was placed back onto the track between the first and second polarizer and then rotated until the angle between the first polarizer and the polarizer with the rotary motion sensor was $\frac\pi4$ so that the light passing through all three polarizers was at a maximum. To scan the light intensity versus angle, the polarizer with the rotary motion sensor was rotated through 360 degrees. This was repeated multiple times until a set of consistent data was acquired. Using the Polarization of Light software, the data was collected from light sensor and rotary motion sensor in volts and radians respectively. \textbf{Figure 2} shows the experimental setup of the three polarizers.\\
+
+\textbf{Experiment 2}
+\newpage
+\section{Results}
+\textbf{Experiment 2}\\
+
+\end{document}
