@@ -9,7 +9,7 @@
 
 \captionsetup[subfigure]{labelformat=empty}
 
-\title{}
+\title{Experimental analysis of the effect of Polarizers and Reflections on light inensity.}
 
 \author{Sebastien \textsc{Psarianos}\\ Sofiya \textsc{P'yavka}}
 
@@ -19,13 +19,8 @@
 
 \maketitle
 
-\begin{center}
-	\begin{tabular}{l r}
-		Date Performed: & October 6, 2022 \\
-	\end{tabular}
-\end{center}
 \section{Introduction}
-\textbf{Experiment 1: Two Polarizers, verify Malus’ Law and Three Polarizers}
+\textbf{Experiment 1: Two Polarizers, verify Malus' Law and Three Polarizers}
 The first objective of this experiment is to verify Malus' Law using two polarizers. Using three polarizers, the second objective of this experiment is to determine the angles between two of the polarizers at which the maximum and minimum light intensities occur.\\
 
 A vector of light can be resolved into two components when it passes through a Polaroid oriented at a certain angle. Only light polarized along the transmission axis will pass through the Polaroid. The light intensity is proportional to the square of the electric field amplitude which is described by the relationship $I(\theta)= I_0\cos^2\phi$ where the initial intensity $I_0=E^2$, Malus' Law. When two polarizers are used, the light vector can be resolved into two components, one parallel and one perpendicular to the transmission axis of the second polarizer where  is the angle between the two transmission axes of the two polarizers.\\
@@ -39,19 +34,489 @@ $$I_3=I_2\cos^2\left(\frac \pi2 - \phi\right)=I_1\cos^2\phi\cos^2\left(\frac\pi2
 
 Rearranging the previous equation:
 $$I_3=\frac{I_1}4\sin^2(\phi)$$
+\newpage
+\textbf{Experiment 2: Polarization by Reflection and Brewster's Angle}\\
+The purpose of this experiment was to determine the Brewster's angle for a laser transitioning
+from air to an acrylic sample and use this value to calculate various other properties of the materials.\\
 
-\textbf{Experiment 2: Polarization by Reflection and Brewster’s Angle}\\
+The angle of incidence $\theta_1$ is related to the transmission angle $\theta_2$ and the refraction indexes of the two materials by Snell's Law:
+$$\frac{\sin\theta_2}{\sin\theta_1} = \frac{n_1}{n_2} \iff \theta_2 = \arcsin\left(\frac{n_1\sin\theta_1}{n_2}\right)$$
+\begin{center}
+	\textbf{Equation 5: Snell's Law}
+\end{center}
+
+When a light beam is reflected off of a surface, a portion of the light beam will be polarized
+perpendicular to the plane of reflection. The degree of polarization of the light depends
+on the angle. There exists a particular angle $\theta_p$ such that the light is fully
+polarized perpendicular to the plane of reflection. This is known as Brewster's Angle. Brewster's
+angle is related to the refractive indexes ($n_1$ and $n_2$) of the two mediums by the equation:
+$$\tan\theta_p = \frac{n_2}{n_1}$$
+\begin{center}
+	\textbf{Equation 6: Brewster's Angle Definition}
+\end{center}
+
+The reflectance $R$ of a medium is defined: $R = \frac{I_0}{I_i}$. Where $I_0$ is the reflected
+intensity and $I_i$ is the incident intensity. Reflectance can be divided into it's
+perpendicular ($R_\perp$) and parallel ($R_\parallel$) and these are related to the reflection coefficients by the following equations:
+$$R_\parallel =(r_\parallel)^2\  \mathrm{and }\ R_\perp = (r_\perp)^2$$
+The reflective coefficients are related to $\theta_1$, $\theta_2$, $n_1$ and $n_2$ with the Fresnel
+equations defined as follows.
+\begin{tabular}{p{0.45\linewidth} p{0.45\linewidth}}
+	$$ r_\parallel = \frac{n_1\cos\theta_2 - n_2\cos\theta_1}{n_1\cos\theta_2 + n_2\cos\theta_1}$$
+	\begin{center}
+		\textbf{Equation 7: Parallel reflectance Fresnel equation}
+	\end{center}
+	&
+	$$r_\perp = \frac{n_1\cos\theta_1 - n_2\cos\theta_2}{n_1\cos\theta_1 + n_2\cos\theta_2}$$
+	\begin{center}
+		\textbf{Equation 8: Perpendicular reflectance Fresnel equation}
+	\end{center}\\
+\end{tabular}
 \newpage
 \section{Methodology and Procedure}
 \textbf{Experiment 1}\\
 
-A polarizer and a CI-6504A light sensor were placed on an optics track. A laser was then sent through the polarizer to be detected by the light sensor. Using the Polarization of Light software to observe the light intensity, the polarizer was rotated to an angle where the light intensity was at its maximum. A polarizer with a CI-6538 rotary motion sensor was then placed on the track between the first polarizer and the light sensor and rotated to an angle where the light intensity passing through both polarizers was at its maximum. To scan the light intensity versus angle, the polarizer with the rotary motion sensor was rotated through 180 degrees. This was repeated multiple times until a set of consistent data was acquired. Using the Polarization of Light software, the data was collected from light sensor and rotary motion sensor in volts and radians respectively. \textbf{Figure 1} shows the experimental setup of the two polarizers.\\
+A polarizer and a CI-6504A light sensor were placed on an optics track. A laser was then sent through the polarizer
+to be detected by the light sensor. Using the Polarization of Light software to observe the light intensity, the
+polarizer was rotated to an angle where the light intensity was at its maximum. A polarizer with a CI-6538 rotary
+motion sensor was then placed on the track between the first polarizer and the light sensor and rotated to an angle
+where the light intensity passing through both polarizers was at its maximum. To scan the light intensity versus
+angle, the polarizer with the rotary motion sensor was rotated through 180 degrees. This was repeated multiple
+times until a set of consistent data was acquired. Using the Polarization of Light software, the data was collected
+from light sensor and rotary motion sensor in volts and radians respectively. \textbf{Figure 1} shows the experimental
+setup of the two polarizers.\\
 
-The polarizer with the rotary motion sensor was removed from the track. Using the Polarization of Light software to observe the light intensity, the first polarizer was rotated to an angle where the light intensity was at its maximum. A second polarizer was then placed between the first polarizer and the light sensor on the track and rotated until the light intensity through both polarizers was at a minimum. Finally, the polarizer with the rotary motion sensor was placed back onto the track between the first and second polarizer and then rotated until the angle between the first polarizer and the polarizer with the rotary motion sensor was $\frac\pi4$ so that the light passing through all three polarizers was at a maximum. To scan the light intensity versus angle, the polarizer with the rotary motion sensor was rotated through 360 degrees. This was repeated multiple times until a set of consistent data was acquired. Using the Polarization of Light software, the data was collected from light sensor and rotary motion sensor in volts and radians respectively. \textbf{Figure 2} shows the experimental setup of the three polarizers.\\
+The polarizer with the rotary motion sensor was removed from the track. Using the Polarization of Light software to
+observe the light intensity, the first polarizer was rotated to an angle where the light intensity was at its maximum.
+A second polarizer was then placed between the first polarizer and the light sensor on the track and rotated until
+the light intensity through both polarizers was at a minimum. Finally, the polarizer with the rotary motion sensor
+was placed back onto the track between the first and second polarizer and then rotated until the angle between the
+first polarizer and the polarizer with the rotary motion sensor was $\frac\pi4$ so that the light passing through
+all three polarizers was at a maximum. To scan the light intensity versus angle, the polarizer with the rotary
+motion sensor was rotated through 360 degrees. This was repeated multiple times until a set of consistent data
+was acquired. Using the Polarization of Light software, the data was collected from light sensor and rotary
+motion sensor in volts and degrees respectively. The angles were all converted to radians with the \lstinline{radian}
+function from numpy. \textbf{Figure 2} shows the experimental setup of the three polarizers.
 
-\textbf{Experiment 2}
+
+\begin{figure}[H]
+	\begin{subfigure}{0.45\textwidth}
+		\includegraphics[width=\textwidth]{../figures/experimentOneApparatusA.png}
+		\caption{\textbf{Figure 1: Apparatus for experiment 1 (two polarizers)}}
+	\end{subfigure}\hfill
+	\begin{subfigure}{0.45\textwidth}
+		\includegraphics[width=\textwidth]{../figures/experimentOneApparatusB.png}
+		\caption{\textbf{Figure 2: Apparatus for experiment 2 (three polarizers)}}
+	\end{subfigure}
+\end{figure}
 \newpage
-\section{Results}
 \textbf{Experiment 2}\\
+A CI-6538 rotary motion sensor mounted on a spectrophotometer table, CI-6504A light sensor, Brewster's disk,
+acrylic semicircular lens, two polarizers, a square polarizer and an optics track was set up as shown in \textbf{Figure 3}.
+The second polarizer, which was further away from the laser, was rotated to 225 degrees and locked in place and the
+Brewster's angle disk was zeroed. The Brewster's disk was then rotated to 120 degrees and the first polarizer,
+closest to the laser, was rotated until the intensity detected was maximized. The data acquisition began without
+using the square polarizer. To scan the light intensity versus angle, the spectrophotometer arm and Brewster's
+disk were rotated clockwise at the same time, keeping the laser directed at the detector. This was repeated
+multiple times until a set of consistent data was acquired. The same procedure was repeated, however, the
+square polarizer on its horizontal axis was placed in front of the detector. Using the Brewster's Angle
+application, the data was collected from light sensor and rotary motion sensor in volts and radians respectively.
 
+\begin{figure}[H]
+	\centering
+	\begin{subfigure}{0.45\textwidth}
+		\includegraphics[width=\textwidth]{../figures/experimentTwoApparatus.png}
+		\caption{\textbf{Figure 3: Apparatus for experiment 2}}
+	\end{subfigure}
+\end{figure}
+\section{Results}
+For both experiments, the uncertainty of the light intensity was taken to be $\pm 0.01 V$ as the value of the intensity would fluctuate
+and the uncertainty of the angle was taken to be the resolution of the light rotary motion sensor being
+$\pm 0.00001 rad$. \\
+
+\textbf{Experiment 1}\\
+
+To determine the initial intensity in the experimental setup with two polarizers, the model as defined
+by \textbf{Equation 1} and implemented by \textbf{Function 1}, was passed into scipy's \lstinline{curve_fit} function and
+fitted to the light intensity and angle data. The uncertainty of the initial intensity was determined
+using \lstinline{curve_fit}'s covariance values since the diagonals of the covariance matrix represent
+the variability of each parameter and the square root of this was taken to calculate the standard error.
+\textbf{Figure 4} demonstrates the relationship between the angle of the polarizer with the rotary motion sensor
+and the light intensity detected.\\
+\textbf{Figure 5} demonstrates the relationship between the light intensity and the cosine of the angle squared.
+The uncertainty of the angle was propagated using \textbf{Equation 2}. Furthermore \textbf{Figures 6 and 7} picture the
+residual plots for the relationship between the angle of the polarizer with the rotary motion sensor
+and the light intensity detected and the relationship between the light intensity and the cosine of
+the angle squared respectively.\\
+
+\begin{figure}[H]
+	\begin{subfigure}{0.45\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{../figures/figure4.pdf}
+		\caption{\textbf{Figure 4: Graph of detected intensity vs polarizer angle for the two polarizer system. Plot includes a regression fit of function 2. }}
+	\end{subfigure}
+	\hfill
+	\begin{subfigure}{0.45\textwidth}
+		\includegraphics[width=\textwidth]{../figures/figure5.pdf}
+		\caption{\textbf{Figure 5: Graph of detected intensity vs cos of the polarizer angle squared for the two polarizer system. Plot includes a regression fit of function 1.}}
+	\end{subfigure}
+	\begin{subfigure}{0.45\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{../figures/figure6.pdf}
+		\caption{\textbf{Figure 6: Residuals plot for Figure 4.}}
+	\end{subfigure}
+	\hfill
+	\begin{subfigure}{0.45\textwidth}
+		\includegraphics[width=\textwidth]{../figures/figure7.pdf}
+		\caption{\textbf{Figure 7 : Residuals plot for Figure 5.}}
+	\end{subfigure}
+\end{figure}
+
+To determine the light intensity passing through the first polarizer in the experimental setup with
+three polarizers, the model as defined by \textbf{Equation 3} and implemented by \textbf{Function 2}, was passed into
+scipy's \lstinline{curve_fit} function and fitted to the light intensity and angle data. The uncertainty of the
+light intensity passing through the first polarizer was determined using \lstinline{curve_fit}'s
+covariance using the same method as described above. \textbf{Figure 8} demonstrates the relationship between
+the angle of the polarizer with the rotary motion sensor and the light intensity detected. Furthermore,
+\textbf{Figure 9} pictures the residual plot for the relationship between the angle of the polarizer with the rotary
+motion sensor and the light intensity detected.\\
+\begin{figure}[H]
+	\begin{subfigure}[t]{0.45\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{../figures/figure8.pdf}
+		\caption{\textbf{Figure 8: Graph of detected intensity vs polarizer angle for the three polarizer system. Plot includes a regression fit of Function 2. }}
+	\end{subfigure}
+	\hfill
+	\begin{subfigure}[t]{0.45\textwidth}
+		\includegraphics[width=\textwidth]{../figures/figure9.pdf}
+		\caption{\textbf{Figure 9: Residuals plot for Figure 8}}
+	\end{subfigure}
+\end{figure}
+
+The reduced chi-squared values were determined using \textbf{Function 3}.\\\\
+\textbf{Experiment 2}\\
+At the start of every measurement interval, there was an initial angle of $180^\circ$.
+The initial incidence angle was always set to $45^\circ$ at the start of each measurement
+interval. The measured angle value was also increasing as the incidence angle decreased.
+The combination of these factors meant that the measured angle values had to be scaled according
+to the following equation:
+$$\theta_{\rm incidence} = 180-\theta_{measured} + \phi_{initial}$$
+Where $\phi_{\rm initial}$ is the initial incidence angle at the start of the measurements which was measured
+to be $45^\circ$. This equation was applied to every value using its implementation (\textbf{Function 4})
+(this function also converts all values to radians from degrees).\\
+
+It was difficult to get a complete measurement of all angles without the laser beam occasionally
+missing the detector. This meant that there were significant portions of the data that were
+missing intervals. Due to this \textbf{Function 5} was built to reduce the problematic points.
+This resulted in a noticeable drop in points where intensity dropped significantly. \textbf{Figure 10}
+shows a graph of the ratio of the polarized to non-polarized intensity measurements before
+problematic points had been removed. \textbf{Figure 11} shows the same data after this procedure was performed.
+\begin{figure}[H]
+	\begin{subfigure}{0.45\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{../figures/figure10.pdf}
+		\caption{\textbf{Figure 10: Graph of polarized intensity over non-polarized intensity ratio vs incidence angle before the data cleanup was performed.}}
+	\end{subfigure}
+	\hfill
+	\begin{subfigure}{0.45\textwidth}
+		\includegraphics[width=\textwidth]{../figures/figure11.pdf}
+		\caption{\textbf{Figure 11: Graph of polarized intensity over non-polarized intensity ratio vs incidence angle after the data cleanup was performed.}}
+	\end{subfigure}
+\end{figure}
+The effect of this change is also clearly visible in the plots of both intensities:
+\begin{figure}[H]
+	\begin{subfigure}{0.45\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{../figures/figure12.pdf}
+		\caption{\textbf{Figure 12: Graph of raw intensity measurements vs incidence angle of both polarized and non-polarized measurements before data cleanup was done. }}
+	\end{subfigure}
+	\hfill
+	\begin{subfigure}{0.45\textwidth}
+		\includegraphics[width=\textwidth]{../figures/figure13.pdf}
+		\caption{\textbf{Figure 13: Graph of raw intensity measurements vs incidence angle of both polarized and non-polarized measurements before data cleanup was done.}}
+	\end{subfigure}
+\end{figure}
+The function takes every data points and compares it to the average of the 5 data points before it. It removes the
+point if it is less than 90 percent of the average.\\
+
+The Brewster's angle was calculated as the minimum of the ratio of reflected
+horizontally polarized intensity over the reflected intensity. The computed Brewster's Angle was: $0.61\pm0.01$ radians.
+This value was used in conjunction with \textbf{Equation 6} to calculate the refractive index of acrylic ($n_2$).
+The calculated value for $n_2$ was $0.70\pm0.02$.\\
+\newpage
+These values were used in conjunction with \textbf{Equation 7} and \textbf{Equation 8} to calculate the perpendicular
+and parallel reflection coefficients for the system at each angle. These values are modelled in \textbf{Figure 14}
+In practice, this was done in python using the implementations of \textbf{Equations 7 and 8}: \textbf{Functions 6 and 7}.
+\begin{figure}[H]
+	\centering
+	\begin{subfigure}{0.45\textwidth}
+		\includegraphics[width=\textwidth]{../figures/figure14.pdf}
+		\caption{\textbf{Figure 14: Parallel and perpendicular reflection coefficients for the air acrylic system vs incidence angle}}
+	\end{subfigure}
+\end{figure}
+There were two compromises that had to be made during these calculations. The first is
+that the polarized and non-polarized ($I$ and $I_0$) data sets had different angle values
+for their corresponding measurements. They were close to each other but not exactly the same.
+For the purpose of this experiment, due to the proximity of the measured angles, the ratio
+was approximated by dividing identical indexes in each data set by each other. Additionally,
+the range of the intensity detector was not sufficient to get a full range of values.
+A subset of both data sets had to be removed from the calculations due to the detector
+reaching its maximum measurable intensity. Both of these compromises are discussed further
+in the analysis and discussion section.
+
+\section{Analysis and Discussion}
+The initial intensity of the light in the experimental setup with two polarizers is $3.114 \pm 0.007 V$ and the intensity
+of the light passing through the first polarizer in the experimental setup with three polarizers is $3.79 \pm 0.06 V$.
+
+Examining \textbf{Figures 3 and 5}, the graph for 2 polarizers covers one period while the graph for three polarizers covers
+two periods. The amplitude of the sinusoid pictured by the graph for two polarizers is also roughly three times greater
+in magnitude than the amplitude of the sinusoid pictured by the graph for three polarizers. \textbf{Figure 4} demonstrates a
+linear relationship as expected which is described by $I(\theta) = I_0C(\theta)$ where $C(\theta) = \cos^2\theta$.
+Analyzing \textbf{Figure 5} and taking into account that the initial difference between the first polarizer and the
+polarizer with the rotary motion sensor was 4, the maxima and minima for the three polarizer experiment occur when the
+angle between the first polarizer and the polarizer with the rotary motion sensor is $\frac{\pi}{4} + n\pi$
+where $n\in \{1, 2, 3, ...\}$ and $\frac{\pi}{2}+n\pi$ where $n\in\{1, 2, 3, ...\}$
+respectively.\\
+
+The respective reduced chi-squared values were determined to be $32.4$ and $113.3$. Visually, the models fit the experimental
+data relatively well, however the reduced chi-squared value, $32.4$, determined for two polarizers indicates that the uncertainty
+of the light intensity may have been underestimated. Examining \textbf{Figure 5}, the theoretical model is shifted slightly to the
+right of the experimental data, in turn this is reflected in the reduced chi-squared value of $113.3$.\\
+
+\textbf{Experiment 2}\\
+There were multiple significant sources of error in this experiment that likely lead to
+not accurate results. \\
+
+As discussed in the results section, the detector that was used in this experiment had a range that was not sufficient to measure
+the full range of intensities across all values. First polarizer adjustment was done to reduce the
+intensity to a point where the detector was not maxed out through most of its range. There was still a subset
+towards the end in both data sets that was at a constant max value. Using a detector with a wider
+range of intensity values would likely solve this issue.\\
+
+The two data sets had differing increments of angle measurements. This resulted in a compromise having to be
+made when taking the ratio of the two data sets, likely leading to less accurate results. Ideally, the
+incidence angles of each intensity measurement should be the same across both data sets. Setting up the
+computer to record intensities at set angle intervals would eliminate this issue.\\
+
+While the lab was being performed, there was difficulty keeping the laser beam lined up with the detector.
+This can be clearly seen in \textbf{Figures 10 and 12}, which plot data that has not been programmatically cleaned up.
+The data set had certain intervals that were $\approx 0$ intensity due to this. This was partially
+mitigated by the data cleanup algorithm shown in \textbf{Function 5}, but it wasn't completely successful.
+Ensuring that the laser beam is lined up with the detector through the entire range of measurements
+could be achieved through a gear ratio or similar setup that would rotate both the acrylic lens and detector
+arm at the ideal ratio to maintain alignment. This would result in more representative data that
+wouldn't have to be cleaned up programmatically.\\
+
+In the results, the proximity of the calculated Brewster's angle to the maximum measured angle
+incidencce angle is notable. The maximum measured incidence angle was approximately $0.61\pm0.01 radians$
+and the calculated Brewster's angle value was $0.61\pm0.01$. Additionally, in \textbf{Figure 11} there is a
+clear decrease in intensity for higher angles. It is possible that this trend would've continued to larger
+incidence angles. Therefore, for a conclusive Brewster's angle measurement, a larger range of angles would
+confirm whether the calculated Brewster's angle was correct. Ideally, for a future experiment, measurements
+should start with the beam as close as possible to perpendicular to the surface of the lens.\\
+
+\section{Conclusion}
+\textbf{Experiment 1}\\
+In regards to the experimental setup with two polarizers, the theoretical model visually fits the data relatively well,
+verifying that the light intensity passing through a polarizer can be quantified using Malus' Law. Furthermore in the
+experimental setup with three polarizers, the maxima and minima of the experimental data occur roughly near the maxima
+and minima of the theoretical model, verifying that the maxima and minima occur when the angle between the first polarizer
+and the polarizer with the rotary motion sensor is $\frac{\pi}{4} + n\pi$ where $n \in\{1, 2, 3, ...\}$ and
+$\frac{\pi}{2}+n\pi$ where $n\in \{1, 2, 3, ...\}$ respectively.\\
+\newpage
+\textbf{Experiment 2}\\
+There were numerous issues with the data that was acquired in this experiment that lead to calculated values that are
+likely not accurate as discussed in the Analysis and Discussion section. Do get conclusive results, the experiment
+should be repeated with a larger range intensity detector, repeatable measurement angle increments, some mechanical
+system to maintain alignment of the detector and beam and a larger range of angles. This would result in a measurement
+of Brewster's angle that would be much more accurate.
+\section{Appendix}
+{\large\textbf{Equations}}\\
+\begin{tabular}{p{0.45\linewidth} p{0.45\linewidth}}
+	$$I(\theta) = I_0\cos^2(\theta)$$
+	\begin{center}
+		\textbf{Equation 1: Malus' Law}
+	\end{center}
+	&
+	$$u(\cos^2(x)) = \frac{2\left|\sin(x) \times u(x)\right|}{\cos^2(x)}$$
+	\begin{center}
+		\textbf{Equation 2: Cos-Squared propagation}
+	\end{center}
+	\\
+	$$I_3 = \frac{I_1}4\sin^2(2\phi) $$
+	\begin{center}
+		\textbf{Equation 3: Relation between first and third polarizer intensities}
+	\end{center}
+	&
+	$$\chi^2_R = \frac{1}{N-n}\sum_{i=1}^N\left(\frac{y_i-y(x_i)}{u(y_i)}\right)$$
+	\begin{center}
+		\textbf{Equation 4: Reduced chi-Squared Metric}
+	\end{center}\\
+	% Begin experiment 2
+	$$ \frac{\sin(\theta_2)}{\sin(\theta_1)} = \frac{n_1}{n_2} \iff \theta_2 = \arcsin\left(\frac{n_2\sin(\theta_1)}{n_1}\right)  $$
+	\begin{center}
+		\textbf{Equation 5: Snell's Law}
+	\end{center}
+	&
+	$$\tan\theta_p = \frac{n_2}{n_1} \iff \theta_p = \arctan{\frac{n_2}{n_1}}$$
+	\begin{center}
+		\textbf{Equation 6: Brewster's Angle definition}
+	\end{center}\\
+
+	$$ r_\parallel = \frac{n_1\cos\theta_2 - n_2\cos\theta_1}{n_1\cos\theta_2 + n_2\cos\theta_1}$$
+	\begin{center}
+		\textbf{Equation 7: Parallel reflectance Fresnel equation}
+	\end{center}
+	&
+	$$r_\perp = \frac{n_1\cos\theta_1 - n_2\cos\theta_2}{n_1\cos\theta_1 + n_2\cos\theta_2}$$
+	\begin{center}
+		\textbf{Equation 8: Perpendicular reflectance Fresnel equation}
+	\end{center}\\
+
+	$$u(\arctan(x)) = \sqrt{\left(\frac{\partial \arctan(x)}{\partial x}\right)^2 \left(u(x)\right)^2} = \frac{u(x)}{1+x^2}$$
+	\begin{center}
+		\textbf{Equation 9: $\arctan$ error propagation}
+	\end{center}
+	&
+	$$u(\tan(x)) = \sqrt{\left(\frac{\partial \tan(x)}{\partial x}\right)^2 \left(u(x)\right)^2} = \frac{u(x)}{\cos^2(x)}$$
+	\begin{center}
+		\textbf{Equation 10: $\tan$ error propagation}
+	\end{center}\\
+
+\end{tabular}
+\newpage
+{\large\textbf{Functions}}\\
+\begin{verbatim}
+def cosineModel(angle, initialIntensity):
+    return initialIntensity * ((np.cos(angle)) ** 2)
+\end{verbatim}
+\begin{center}
+	\textbf{Function 1: Cosine Model (implements Equation 1)}\\
+\end{center}
+\begin{verbatim}
+def intensity(angle, firstIntensity):
+    return firstIntensity / 4 * (np.sin(np.pi / 2 + 2 * angle) ** 2)
+\end{verbatim}
+\begin{center}
+	\textbf{Function 2: Intensity Model (implements Equation 3)}\\
+\end{center}
+\begin{verbatim}
+def characterize(y: any, func: any, u: any) -> float:
+    """Return the chi^2 metric to determine how well a model function fits a
+    given set of data using the measured data <y>, the prediction with the model
+    <func> and the uncertainty on each measurement's dependent data <u>.
+    """
+    value = 0
+
+    for i in range(np.size(y)):
+        value += ((y[i] - func[i]) ** 2) / (u ** 2)
+        i += 1
+
+    return value / (np.size(y) - 1)
+\end{verbatim}
+\begin{center}
+	\textbf{Function 3: Reduced chi-squared metric (implements Equation 4)}
+\end{center}
+\begin{verbatim}
+def convertMeasuredToIncidence(measurement):
+    return np.radians(180 - measurement + 35)
+\end{verbatim}
+\begin{center}
+	\textbf{Function 4: Function used to convert measured angles into incidence angles in radians}
+\end{center}
+\newpage
+\begin{verbatim}
+	def removeInconsistentPoints(firstIntensities, secondIntensities, thetas):
+    i = 5
+    while i < len(firstIntensities):
+        firstIntensitiesAvg = np.sum(firstIntensities[i - 5 : i]) / 5
+        secondIntensitiesAvg = np.sum(secondIntensities[i - 5 : i]) / 5
+        if (
+            firstIntensities[i] - firstIntensitiesAvg
+            < -firstIntensitiesAvg / 10
+        ) or (
+            secondIntensities[i] - secondIntensitiesAvg
+            < -secondIntensitiesAvg / 10
+        ):
+
+            firstIntensities = np.delete(firstIntensities, i)
+            secondIntensities = np.delete(secondIntensities, i)
+
+            thetas = np.delete(thetas, i)
+            break
+        i += 1
+    else:
+        return firstIntensities, secondIntensities, thetas
+
+    firstIntensities, secondIntensities, thetas = removeInconsistentPoints(
+        firstIntensities, secondIntensities, thetas
+    )
+    return firstIntensities, secondIntensities, thetas
+
+
+\end{verbatim}
+\begin{center}
+	\textbf{Function 5: Function used to remove problematic data points}
+\end{center}
+
+
+\begin{verbatim}
+def parallelReflectanceCoeffModel(theta1, theta2, n2):
+    """
+        Model used to calculate parallel reflectance coefficient.
+        Based off of fresnels equation.
+        Uses a n1 value of 1 for the air.
+        <n2> (index of refraction for acrylic) is theoretically calculated with
+            Brewster's angle
+        <theta1> (angle of incidence) is experimentally measured
+        <theta2> (angle of reflectance) is determined theoretically with snells
+            law
+    """
+    return (np.cos(theta2) - n2 * np.cos(theta1)) / (
+        np.cos(theta2) + n2 * np.cos(theta1)
+    )
+
+\end{verbatim}
+\begin{center}
+	\textbf{Function 6: Fresnel's parallel reflectance coefficient equation python model}\\
+
+\end{center}
+
+\begin{verbatim}
+def perpendicularReflectanceCoeffModel(theta1, theta2, n2):
+    """
+        Model used to calculate perpendicular reflectance coefficient.
+        Based off of fresnels equation.
+        Uses a n1 value of 1 for the air.
+        <n2> (index of refraction for acrylic) is theoretically calculated with
+            Brewster's angle
+        <theta1> (angle of incidence) is experimentally measured
+        <theta2> (angle of reflectance) is determined theoretically with snells
+            law
+    """
+    return (np.cos(theta1) - n2 * np.cos(theta2)) / (
+        np.cos(theta1) + n2 * np.cos(theta2)
+    )
+\end{verbatim}
+\begin{center}
+	\textbf{Function 7: Fresnel's perpendicular reflectance coefficient equation python model}
+\end{center}
+{\large\textbf{Raw Experimental Data}}\\
+\begin{center}
+	\textbf{Results for Experiment One (two-polarizer setup)}
+\end{center}
+\input{experimentOneA}
+
+\input{experimentOneB}
+\begin{center}
+	\textbf{Results for Experiment Two (three-polarizer setup)}
+\end{center}
+\input{experimentTwoA}
+\begin{center}
+	\textbf{Results for Experiment Three (Measurements with horizontal polarizer)}
+\end{center}
+\input{experimentTwoB}
+\begin{center}
+	\textbf{Results for Experiment Three (Measurements with no polarizer)}
+\end{center}
 \end{document}
