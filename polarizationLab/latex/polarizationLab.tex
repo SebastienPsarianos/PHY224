@@ -23,17 +23,19 @@
 \textbf{Experiment 1: Two Polarizers, verify Malus' Law and Three Polarizers}
 The first objective of this experiment is to verify Malus' Law using two polarizers. Using three polarizers, the second objective of this experiment is to determine the angles between two of the polarizers at which the maximum and minimum light intensities occur.\\
 
-A vector of light can be resolved into two components when it passes through a Polaroid oriented at a certain angle. Only light polarized along the transmission axis will pass through the Polaroid. The light intensity is proportional to the square of the electric field amplitude which is described by the relationship $I(\theta)= I_0\cos^2\phi$ where the initial intensity $I_0=E^2$, Malus' Law. When two polarizers are used, the light vector can be resolved into two components, one parallel and one perpendicular to the transmission axis of the second polarizer where  is the angle between the two transmission axes of the two polarizers.\\
+A vector of light can be resolved into two components when it passes through a Polaroid oriented at a certain angle. Only light polarized along the transmission axis will pass through the Polaroid. The light intensity is proportional to the square of the electric field amplitude which is described by the relationship $I(\theta)= I_0\cos^2\theta$ where the initial intensity $I_0=E^2$, Malus' Law. When two polarizers are used, the light vector can be resolved into two components, one parallel and one perpendicular to the transmission axis of the second polarizer where $\theta$ is the angle between the two transmission axes of the two polarizers.\\
 
 When three polarizers are used where the angle between the first and third polarizer is $\frac \pi2$, a polarizer between them can be rotated to allow a certain amount of light to pass through all three polarizers. The relationships between the three polarizers are as follows;\\
 
-The intensity after passing through the first polarizer is $I_2=I_1\cos^2\phi$.\\
+The intensity after passing through the first polarizer is $I_2=I_1\cos^2\theta$.\\
 
 The intensity of the light after passing through the third polarizer is:
 $$I_3=I_2\cos^2\left(\frac \pi2 - \phi\right)=I_1\cos^2\phi\cos^2\left(\frac\pi2 - \phi\right)$$
 
 Rearranging the previous equation:
-$$I_3=\frac{I_1}4\sin^2(\phi)$$
+$$I_3=\frac{I_1}4\sin^2(\theta)$$
+Using the equations described, the maximum and minimum of the transmitted light intensity
+and the angles at which they occur can be determined.
 \newpage
 \textbf{Experiment 2: Polarization by Reflection and Brewster's Angle}\\
 The purpose of this experiment was to determine the Brewster's angle for a laser transitioning
@@ -56,7 +58,7 @@ $$\tan\theta_p = \frac{n_2}{n_1}$$
 \end{center}
 
 The reflectance $R$ of a medium is defined: $R = \frac{I_0}{I_i}$. Where $I_0$ is the reflected
-intensity and $I_i$ is the incident intensity. Reflectance can be divided into it's
+intensity and $I_i$ is the incident intensity. Reflectance can be resolved into it's
 perpendicular ($R_\perp$) and parallel ($R_\parallel$) and these are related to the reflection coefficients by the following equations:
 $$R_\parallel =(r_\parallel)^2\  \mathrm{and }\ R_\perp = (r_\perp)^2$$
 The reflective coefficients are related to $\theta_1$, $\theta_2$, $n_1$ and $n_2$ with the Fresnel
@@ -91,12 +93,11 @@ observe the light intensity, the first polarizer was rotated to an angle where t
 A second polarizer was then placed between the first polarizer and the light sensor on the track and rotated until
 the light intensity through both polarizers was at a minimum. Finally, the polarizer with the rotary motion sensor
 was placed back onto the track between the first and second polarizer and then rotated until the angle between the
-first polarizer and the polarizer with the rotary motion sensor was $\frac\pi4$ so that the light passing through
+first polarizer and the polarizer with the rotary motion sensor was $45^\circ$ so that the light passing through
 all three polarizers was at a maximum. To scan the light intensity versus angle, the polarizer with the rotary
 motion sensor was rotated through 360 degrees. This was repeated multiple times until a set of consistent data
 was acquired. Using the Polarization of Light software, the data was collected from light sensor and rotary
-motion sensor in volts and degrees respectively. The angles were all converted to radians with the \lstinline{radian}
-function from numpy. \textbf{Figure 2} shows the experimental setup of the three polarizers.
+motion sensor in volts and degrees respectively. \textbf{Figure 2} shows the experimental setup of the three polarizers.
 
 
 \begin{figure}[H]
@@ -131,8 +132,8 @@ application, the data was collected from light sensor and rotary motion sensor i
 \end{figure}
 \section{Results}
 For both experiments, the uncertainty of the light intensity was taken to be $\pm 0.01 V$ as the value of the intensity would fluctuate
-and the uncertainty of the angle was taken to be the resolution of the light rotary motion sensor being
-$\pm 0.00001 rad$. \\
+and the uncertainty of the angle was taken to be the resolution of the rotary motion sensor being
+$\pm 0.00001rad$. \\
 
 \textbf{Experiment 1}\\
 
@@ -144,10 +145,11 @@ the variability of each parameter and the square root of this was taken to calcu
 \textbf{Figure 4} demonstrates the relationship between the angle of the polarizer with the rotary motion sensor
 and the light intensity detected.\\
 \textbf{Figure 5} demonstrates the relationship between the light intensity and the cosine of the angle squared.
-The uncertainty of the angle was propagated using \textbf{Equation 2}. Furthermore \textbf{Figures 6 and 7} picture the
+To determine the uncertainty of the cosine of the angle squared, \textbf{Equation 2} was used to propagate the
+uncertainty of the angle. Furthermore \textbf{Figures 6 and 7} picture the
 residual plots for the relationship between the angle of the polarizer with the rotary motion sensor
-and the light intensity detected and the relationship between the light intensity and the cosine of
-the angle squared respectively.\\
+and the light intensity detected and the relationship between the cosine of the polarizer with the
+rotary motion sensor's angle squared and the light intensity detected respectively.
 
 \begin{figure}[H]
 	\begin{subfigure}{0.45\textwidth}
@@ -173,8 +175,10 @@ the angle squared respectively.\\
 \end{figure}
 
 To determine the light intensity passing through the first polarizer in the experimental setup with
-three polarizers, the model as defined by \textbf{Equation 3} and implemented by \textbf{Function 2}, was passed into
-scipy's \lstinline{curve_fit} function and fitted to the light intensity and angle data. The uncertainty of the
+three polarizers, the model as defined by \textbf{Equation 3}, where $\phi = \frac{\pi}{4} + \theta$ since the
+angle difference between the two closest polarizers to the laser was $\frac{\pi}{4}$. This equation is
+implemented by \textbf{Function 2}, which was passed into scipy's \lstinline{curve_fit} function and fitted
+to the light intensity and angle data. The uncertainty of the
 light intensity passing through the first polarizer was determined using \lstinline{curve_fit}'s
 covariance using the same method as described above. \textbf{Figure 8} demonstrates the relationship between
 the angle of the polarizer with the rotary motion sensor and the light intensity detected. Furthermore,
@@ -193,7 +197,15 @@ motion sensor and the light intensity detected.\\
 	\end{subfigure}
 \end{figure}
 
-The reduced chi-squared values were determined using \textbf{Function 3}.\\\\
+The reduced chi-squared values were determined using \textbf{Function 3}. The values determined
+for the initial intensity for the two polarizer setup and the intensity passing through the
+first polarizer for three polarizer setup were $3.114 \pm 0.007V$ and $3.79 \pm 0.06V$ respectively.
+Furthermore the angles at which the maximum and minimum light intensities are transmitted in the
+three polarizer setup were determined to be $\frac{\pi}{4} + n\frac{\pi}{2}, n\in\mathbb{Z}$ and
+$\frac{\pi}{2} + n\frac{\pi}{2} , n\in\mathbb{Z}$
+respectively.\\
+
+
 \textbf{Experiment 2}\\
 At the start of every measurement interval, there was an initial angle of $180^\circ$.
 The initial incidence angle was always set to $45^\circ$ at the start of each measurement
@@ -269,14 +281,18 @@ The initial intensity of the light in the experimental setup with two polarizers
 of the light passing through the first polarizer in the experimental setup with three polarizers is $3.79 \pm 0.06 V$.
 
 Examining \textbf{Figures 3 and 5}, the graph for 2 polarizers covers one period while the graph for three polarizers covers
-two periods. The amplitude of the sinusoid pictured by the graph for two polarizers is also roughly three times greater
-in magnitude than the amplitude of the sinusoid pictured by the graph for three polarizers. \textbf{Figure 4} demonstrates a
-linear relationship as expected which is described by $I(\theta) = I_0C(\theta)$ where $C(\theta) = \cos^2\theta$.
+two periods, where both graphs depict sinusoids with period $\pi$. The amplitude of the sinusoid pictured by the graph for two polarizers is also roughly three times greater
+in magnitude than the amplitude of the sinusoid pictured by the graph for three polarizers. Since the polarizer with the
+rotary motion sensor in the experimental setup with two polarizers was only rotated through $180 ^\circ$, only one period
+is depicted in its respective graph in contrast to the experimental setup with three polarizers where the polarizer with
+the rotary motion sensor was rotated through 360 degrees, in turn having its respective graph depict two periods. In regards
+to the amplitudes, it is expected that the amplitude of the sinusoid pictured in \textbf{Figure 5} would be less than the amplitude
+of \textbf{Figure 3}'s sinusoid as the light must pass through three polarizers instead of two, limiting the amount of light which
+was transmitted. \textbf{Figure 4} demonstrates a linear relationship as expected which is described by $I(\theta) = I_0C(\theta)$ where $C(\theta) = \cos^2\theta$.
 Analyzing \textbf{Figure 5} and taking into account that the initial difference between the first polarizer and the
-polarizer with the rotary motion sensor was 4, the maxima and minima for the three polarizer experiment occur when the
-angle between the first polarizer and the polarizer with the rotary motion sensor is $\frac{\pi}{4} + n\pi$
-where $n\in \{1, 2, 3, ...\}$ and $\frac{\pi}{2}+n\pi$ where $n\in\{1, 2, 3, ...\}$
-respectively.\\
+polarizer with the rotary motion sensor was $\frac{\pi}{4}$, the maxima and minima for the three polarizer experiment occur when the
+angle between the first polarizer and the polarizer with the rotary motion sensor is $\frac{\pi}{4} + n\frac{\pi}{2}, n\in \mathbb{Z}$
+and $\frac{\pi}{2}+n\frac{\pi}{2}, n\in\mathbb{Z}$ respectively.\\
 
 The respective reduced chi-squared values were determined to be $32.4$ and $113.3$. Visually, the models fit the experimental
 data relatively well, however the reduced chi-squared value, $32.4$, determined for two polarizers indicates that the uncertainty
@@ -284,11 +300,12 @@ of the light intensity may have been underestimated. Examining \textbf{Figure 5}
 right of the experimental data, in turn this is reflected in the reduced chi-squared value of $113.3$.\\
 
 \textbf{Experiment 2}\\
-There were multiple significant sources of error in this experiment that likely lead to
-not accurate results. \\
+The calculated value for $\theta_p$ was $0.61\pm 0.01$ this was significantly different to the literature value of
+approximately $1.5$. There were multiple significant sources of error in this experiment that likely lead to
+these less accurate results. \\
 
 As discussed in the results section, the detector that was used in this experiment had a range that was not sufficient to measure
-the full range of intensities across all values. First polarizer adjustment was done to reduce the
+the full range of intensities across all values. The first polarizer adjustment was done to reduce the
 intensity to a point where the detector was not maxed out through most of its range. There was still a subset
 towards the end in both data sets that was at a constant max value. Using a detector with a wider
 range of intensity values would likely solve this issue.\\
@@ -308,28 +325,38 @@ arm at the ideal ratio to maintain alignment. This would result in more represen
 wouldn't have to be cleaned up programmatically.\\
 
 In the results, the proximity of the calculated Brewster's angle to the maximum measured angle
-incidencce angle is notable. The maximum measured incidence angle was approximately $0.61\pm0.01 radians$
-and the calculated Brewster's angle value was $0.61\pm0.01$. Additionally, in \textbf{Figure 11} there is a
+incidencce angle is notable. The maximum measured incidence angle was approximately $0.61\pm0.01rad$
+and the calculated Brewster's angle value was $0.61\pm0.01rad$. Additionally, in \textbf{Figure 11} there is a
 clear decrease in intensity for higher angles. It is possible that this trend would've continued to larger
 incidence angles. Therefore, for a conclusive Brewster's angle measurement, a larger range of angles would
 confirm whether the calculated Brewster's angle was correct. Ideally, for a future experiment, measurements
 should start with the beam as close as possible to perpendicular to the surface of the lens.\\
 
+The $n_2$ value for water is approximately $1.3$ and the acrylic refractive index is approximately $1.5$ Considering that the
+$n_1$ value would remain the same as the first medium is still air, if the beam was to reflect off of a
+water surface then there would be a decrease in Brewster's due to the relation $\tan(\theta_p) = \frac{n2}{n1}$. If the
+data was to be measured with a vertical polarizer, the ratio graph would likely be inverted due to the fact that a high portion
+of the total light being horizontally polarized will result in a low vertically polarized component and vice-versa. Polarized sunglasses
+are vertically polarized. Since most of the glare that will be seen outdoors is reflection off of the water or ground, the
+horizontal polarized light will make up a higher portion of the visible light. This could be verified by running the laser through
+a horizontal polarizer to ensure horizontally polarized light and then rotating the sunglasses from their normal axis to $90^\circ$
+in one direction and measuring the intensity.
+
 \section{Conclusion}
 \textbf{Experiment 1}\\
-In regards to the experimental setup with two polarizers, the theoretical model visually fits the data relatively well,
+In regards to the experimental setup with two polarizers, the theoretical depicted in \textbf{Figure 3} model visually fits the data relatively well,
 verifying that the light intensity passing through a polarizer can be quantified using Malus' Law. Furthermore in the
 experimental setup with three polarizers, the maxima and minima of the experimental data occur roughly near the maxima
 and minima of the theoretical model, verifying that the maxima and minima occur when the angle between the first polarizer
-and the polarizer with the rotary motion sensor is $\frac{\pi}{4} + n\pi$ where $n \in\{1, 2, 3, ...\}$ and
-$\frac{\pi}{2}+n\pi$ where $n\in \{1, 2, 3, ...\}$ respectively.\\
-\newpage
+and the polarizer with the rotary motion sensor is $\frac{\pi}{4} + n\frac{\pi}{2}$ where $n \in \mathbb{Z}$ and
+$\frac{\pi}{2}+n\frac{\pi}{2}$ where $n\in \mathbb{Z}$ respectively.\\
+
 \textbf{Experiment 2}\\
 There were numerous issues with the data that was acquired in this experiment that lead to calculated values that are
-likely not accurate as discussed in the Analysis and Discussion section. Do get conclusive results, the experiment
-should be repeated with a larger range intensity detector, repeatable measurement angle increments, some mechanical
-system to maintain alignment of the detector and beam and a larger range of angles. This would result in a measurement
+likely not accurate as discussed in the Analysis and Discussion section. To get conclusive results, the experiment should be
+repeated with the improvements discussed in the analysis section. This would result in a measurement
 of Brewster's angle that would be much more accurate.
+\newpage
 \section{Appendix}
 {\large\textbf{Equations}}\\
 \begin{tabular}{p{0.45\linewidth} p{0.45\linewidth}}

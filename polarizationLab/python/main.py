@@ -183,7 +183,7 @@ polarizedIntensities, unpolarizedIntensities, angles = removeInconsistentPoints(
 )
 
 ratio = polarizedIntensities / unpolarizedIntensities
-print(max(ratio))
+
 plt.errorbar(
     angles,
     ratio,
