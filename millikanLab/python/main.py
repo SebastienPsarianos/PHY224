@@ -1,12 +1,20 @@
 import os
+import regex
 
 directory = os.path.dirname(os.path.realpath(__file__))
 
 # Replace this with the directory that the files are in
 sampleDataFileNames = os.listdir(f"{directory}/rawData/")
 
-samples = []
 
+def sortByInt(fileName):
+    return int(regex.match(r"\d*", fileName)[0])
+
+
+sampleDataFileNames.sort(key=sortByInt)
+
+
+samples = []
 for fileName in sampleDataFileNames:
     fallingPositions = []
     risingPositions = []
