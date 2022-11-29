@@ -98,6 +98,23 @@ def linear(time, velocity, intercept):
     return time * velocity + intercept
 
 
+def scaleAndRound(data, sigFigs):
+    """
+    Returns a length two tuple. The first element is the values in <data> scaled
+    by the order of magnitude of the smalest element in <data> and rounds them
+    to the number of significant figures defined in <sigFigs>. The second
+    element is the factor that all of the values are scaled by.
+    """
+    scaleFactor = -(math.floor(math.log(min(data), 10)) - sigFigs + 1)
+    scaled = np.rint((data * 10 ** scaleFactor).astype(float)).astype(int)
+    for i in range(len(scaled)):
+        nonSigDigits = len(str(scaled[i])) - sigFigs
+        if nonSigDigits != 0:
+            scaled[i] = round(scaled[i], -nonSigDigits)
+    return (scaled, scaleFactor)
+
+
+
 sampleDataFileNames = os.listdir(f"{directory}/rawData/")
 sampleDataFileNames.sort(key=lambda f: int("".join(filter(str.isdigit, f))))
 
@@ -202,17 +219,6 @@ plt.xlabel("Elementary Charge (C)")
 plt.ylabel("Frequency")
 plt.savefig("Figure2")
 plt.cla()
-
-
-def scaleAndRound(data, sigFigs):
-    scaleFactor = -(math.floor(math.log(min(data), 10)) - sigFigs + 1)
-    scaled = np.rint((data * 10 ** scaleFactor).astype(float)).astype(int)
-    for i in range(len(scaled)):
-        nonSigDigits = len(str(scaled[i])) - sigFigs
-        if nonSigDigits != 0:
-            scaled[i] = round(scaled[i], -nonSigDigits)
-    return (scaled, scaleFactor)
-
 
 scaledOne, scaleFactorOne = scaleAndRound(measuredChargesOne, 3)
 scaledTwo, scaleFactorTwo = scaleAndRound(measuredChargesTwo, 3)
