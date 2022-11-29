@@ -3,6 +3,7 @@ import matplotlib.pyplot as plt
 from scipy.optimize import curve_fit
 from statistics import mean
 import os
+import math
 
 directory = os.path.dirname(os.path.realpath(__file__))
 
@@ -66,6 +67,13 @@ def uncertaintyChargeMethodTwo(
         ** 2
         * uncertaintyThree ** 2
     )
+
+
+def averageUncertainty(uncertainty):
+    s = 0
+    for value in uncertainty:
+        s += value ** 2
+    return np.sqrt(s) / len(uncertainty)
 
 
 #############################
@@ -169,34 +177,52 @@ measuredChargesTwoUncertainty = uncertaintyChargeMethodTwo(
     voltageUpUncertainty,
 )
 
-scaledMethodOne = np.rint((measuredChargesOne * 10 ** 21).astype(float)).astype(
-    int
+hist1, binEdges1 = np.histogram(measuredChargesOne, bins=20)
+plt.bar(
+    binEdges1[:-1],
+    hist1,
+    width=2e-19,
+    edgecolor="black",
+    xerr=averageUncertainty(measuredChargesOneUncertainty),
 )
-scaledMethodTwo = np.rint((measuredChargesTwo * 10 ** 21).astype(float)).astype(
-    int
+plt.xlabel("Elementary Charge (C)")
+plt.ylabel("Frequency")
+plt.savefig("Figure1")
+plt.cla()
+
+hist2, binEdges2 = np.histogram(measuredChargesTwo, bins=20)
+plt.bar(
+    binEdges2[:-1],
+    hist2,
+    width=0.5e-19,
+    edgecolor="black",
+    xerr=averageUncertainty(measuredChargesTwoUncertainty),
 )
+plt.xlabel("Elementary Charge (C)")
+plt.ylabel("Frequency")
+plt.savefig("Figure2")
+plt.cla()
 
-# Adding +/- half of least significant digit to error to account for rounding
-# error and making sure every charge has 3 sig figs
-for i in range(len(scaledMethodOne)):
-    nonSigDigits = len(str(scaledMethodOne[i])) - 3
-    if nonSigDigits != 0:
-        scaledMethodOne[i] = round(scaledMethodOne[i], -nonSigDigits)
-    measuredChargesOneUncertainty[i] = (
-        5 * 10 ** -(20 - nonSigDigits) + measuredChargesOneUncertainty[i]
-    )
-for i in range(len(scaledMethodTwo)):
-    nonSigDigits = len(str(scaledMethodTwo[i])) - 3
-    if nonSigDigits != 0:
-        scaledMethodTwo[i] = round(scaledMethodTwo[i], -nonSigDigits)
-    measuredChargesTwoUncertainty[i] = (
-        5 * 10 ** -(20 - nonSigDigits) + measuredChargesTwoUncertainty[i]
-    )
 
-print(f"GCF for method one: {np.gcd.reduce(scaledMethodOne) / (10**21)}C")
-print(f"GCF for method two: {np.gcd.reduce(scaledMethodTwo) / (10**21)}C")
-print(f"Method One Avg:{np.average(measuredChargesOneUncertainty)}")
-print(f"Method One Max: {max(measuredChargesOneUncertainty)}")
-print(f"Method Two Avg:{np.average(measuredChargesTwoUncertainty)}")
-print(f"Method Two Max: {max(measuredChargesTwoUncertainty)}")
+def scaleAndRound(data, sigFigs):
+    scaleFactor = -(math.floor(math.log(min(data), 10)) - sigFigs + 1)
+    scaled = np.rint((data * 10 ** scaleFactor).astype(float)).astype(int)
+    for i in range(len(scaled)):
+        nonSigDigits = len(str(scaled[i])) - sigFigs
+        if nonSigDigits != 0:
+            scaled[i] = round(scaled[i], -nonSigDigits)
+    return (scaled, scaleFactor)
+
+
+scaledOne, scaleFactorOne = scaleAndRound(measuredChargesOne, 3)
+scaledTwo, scaleFactorTwo = scaleAndRound(measuredChargesTwo, 3)
+scaledOneU, scaleFactorOneU = scaleAndRound(measuredChargesOneUncertainty, 3)
+scaledTwoU, scaleFactorTwoU = scaleAndRound(measuredChargesTwoUncertainty, 3)
+
+print(
+    f"GCF for method one: {np.gcd.reduce(scaledOne) / (10**scaleFactorOne)} ± {np.gcd.reduce(scaledOneU) / 10**scaleFactorOneU}C"
+)
+print(
+    f"GCF for method two: {np.gcd.reduce(scaledTwo) / (10**scaleFactorTwo)} ± {np.gcd.reduce(scaledTwoU) / 10**scaleFactorTwoU}C"
+)
 
