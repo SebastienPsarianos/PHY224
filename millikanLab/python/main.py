@@ -114,7 +114,6 @@ def scaleAndRound(data, sigFigs):
     return (scaled, scaleFactor)
 
 
-
 sampleDataFileNames = os.listdir(f"{directory}/rawData/")
 sampleDataFileNames.sort(key=lambda f: int("".join(filter(str.isdigit, f))))
 
@@ -194,41 +193,43 @@ measuredChargesTwoUncertainty = uncertaintyChargeMethodTwo(
     voltageUpUncertainty,
 )
 
-hist1, binEdges1 = np.histogram(measuredChargesOne, bins=20)
-plt.bar(
-    binEdges1[:-1],
-    hist1,
-    width=2e-19,
-    edgecolor="black",
-    xerr=averageUncertainty(measuredChargesOneUncertainty),
-)
-plt.xlabel("Elementary Charge (C)")
-plt.ylabel("Frequency")
-plt.savefig("Figure1")
-plt.cla()
-
-hist2, binEdges2 = np.histogram(measuredChargesTwo, bins=20)
-plt.bar(
-    binEdges2[:-1],
-    hist2,
-    width=0.5e-19,
-    edgecolor="black",
-    xerr=averageUncertainty(measuredChargesTwoUncertainty),
-)
-plt.xlabel("Elementary Charge (C)")
-plt.ylabel("Frequency")
-plt.savefig("Figure2")
-plt.cla()
-
 scaledOne, scaleFactorOne = scaleAndRound(measuredChargesOne, 3)
 scaledTwo, scaleFactorTwo = scaleAndRound(measuredChargesTwo, 3)
 scaledOneU, scaleFactorOneU = scaleAndRound(measuredChargesOneUncertainty, 3)
 scaledTwoU, scaleFactorTwoU = scaleAndRound(measuredChargesTwoUncertainty, 3)
 
-print(
-    f"GCF for method one: {np.gcd.reduce(scaledOne) / (10**scaleFactorOne)} ± {np.gcd.reduce(scaledOneU) / 10**scaleFactorOneU}C"
-)
-print(
-    f"GCF for method two: {np.gcd.reduce(scaledTwo) / (10**scaleFactorTwo)} ± {np.gcd.reduce(scaledTwoU) / 10**scaleFactorTwoU}C"
-)
+
+if __name__ == "__main__":
+    print(
+        f"GCF for method one: {np.gcd.reduce(scaledOne) / (10**scaleFactorOne)} ± {np.gcd.reduce(scaledOneU) / 10**scaleFactorOneU}C"
+    )
+    print(
+        f"GCF for method two: {np.gcd.reduce(scaledTwo) / (10**scaleFactorTwo)} ± {np.gcd.reduce(scaledTwoU) / 10**scaleFactorTwoU}C"
+    )
+
+    hist1, binEdges1 = np.histogram(measuredChargesOne, bins=20)
+    plt.bar(
+        binEdges1[:-1],
+        hist1,
+        width=2e-19,
+        edgecolor="black",
+        xerr=averageUncertainty(measuredChargesOneUncertainty),
+    )
+    plt.xlabel("Calculated droplet charge (C)")
+    plt.ylabel("Frequency")
+    plt.savefig(f"{directory}/../figures/methodOneHistogram.pdf")
+    plt.cla()
+
+    hist2, binEdges2 = np.histogram(measuredChargesTwo, bins=20)
+    plt.bar(
+        binEdges2[:-1],
+        hist2,
+        width=0.5e-19,
+        edgecolor="black",
+        xerr=averageUncertainty(measuredChargesTwoUncertainty),
+    )
+    plt.xlabel("Calculated droplet charge (C)")
+    plt.ylabel("Frequency")
+    plt.savefig(f"{directory}/../figures/methodTwoHistogram.pdf")
+    plt.cla()
 
